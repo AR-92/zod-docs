@@ -1,11 +1,7 @@
-/* zod-docs v3 */
+/* zod-docs styles */
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "daisyui";
-
-:root {
-  --zod-docs-version: 3;
-}
 
 @theme {
   --color-pattern-fg: oklab(0 0 0.03);
