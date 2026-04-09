@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 
 export default defineConfig({
-  base: '/zod-docs/',
+  base: '/',
   output: 'static',
   integrations: [mdx()],
   build: {
