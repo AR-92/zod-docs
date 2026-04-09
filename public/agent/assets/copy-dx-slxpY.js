@@ -1,1 +1,0 @@
-import{c as a,m as o,I as r}from"./index-BAgRIaxG.js";var c=[["rect",{width:"14",height:"14",x:"8",y:"8",rx:"2",ry:"2",key:"17jyea"}],["path",{d:"M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2",key:"zix9uf"}]],t=e=>a(r,o(e,{name:"Copy",iconNode:c})),y=t;export{y as c};

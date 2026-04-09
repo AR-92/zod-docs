@@ -1,0 +1,331 @@
+<!DOCTYPE html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.18.1"><title>Skills &amp; Tools - Zod Docs</title><link rel="stylesheet" href="/_astro/_slug_.D11RmaWV.css"></head> <body class="overflow-x-hidden"> <div class="isolate bg-white dark:bg-gray-950"> <div class="fixed inset-x-0 top-0 z-10 border-b border-black/5 dark:border-white/10"> <div class="bg-white dark:bg-gray-950"> <div class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6"> <div class="flex items-center gap-4"> <a class="shrink-0" aria-label="Home" href="/docs"> <img src="/favicon.svg" alt="Zod" class="h-5"> </a> <span class="text-lg font-semibold text-gray-950 dark:text-white">zod</span> <button class="flex items-center gap-0.5 rounded-2xl bg-gray-950/5 py-0.5 pr-1.5 pl-2.5 text-xs/5 font-medium text-gray-950 tabular-nums hover:bg-gray-950/7.5 dark:bg-white/10 dark:text-white dark:hover:bg-white/12.5" aria-label="Select version of library" type="button">
+v1.0
+<svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-chevron-down size-4 text-gray-400">  <path d="m6 9 6 6 6-6"></path>  </svg> </button> </div> <div class="flex items-center gap-6 max-md:hidden"> <button type="button" class="inline-flex items-center gap-1 rounded-full bg-gray-950/2 px-2 py-1 inset-ring inset-ring-gray-950/8 dark:bg-white/5 dark:inset-ring-white/2"> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-search -ml-0.5 size-4 text-gray-600 dark:text-gray-500">  <path d="m21 21-4.34-4.34"></path> <circle cx="11" cy="11" r="8"></circle>  </svg> <kbd class="hidden font-sans text-xs/4 text-gray-500 dark:text-gray-400 [.os-macos_&]:block">⌘K</kbd> <kbd class="hidden font-sans text-xs/4 text-gray-500 not-[.os-macos_&]:block dark:text-gray-400">Ctrl&nbsp;K</kbd> </button> <a class="text-sm/6 text-gray-950 dark:text-white hover:opacity-80 transition-opacity" href="/docs">Documentation</a> </div> <div class="flex items-center gap-2.5 md:hidden"> <button type="button" aria-label="Search" class="inline-grid size-7 place-items-center rounded-md"> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-search size-4">  <path d="m21 21-4.34-4.34"></path> <circle cx="11" cy="11" r="8"></circle>  </svg> </button> <button type="button" class="relative inline-grid size-7 place-items-center rounded-md text-gray-950 hover:bg-gray-950/5 dark:text-white dark:hover:bg-white/10" aria-label="Navigation"> <span class="absolute top-1/2 left-1/2 size-11 -translate-1/2 pointer-fine:hidden"></span> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-ellipsis size-4">  <circle cx="12" cy="12" r="1"></circle> <circle cx="19" cy="12" r="1"></circle> <circle cx="5" cy="12" r="1"></circle>  </svg> </button> </div> </div> </div> </div> <div class="grid min-h-dvh grid-cols-1 grid-rows-[1fr_1px_auto_1px_auto] pt-26.25 lg:grid-cols-[14rem_2.5rem_minmax(0,1fr)_2.5rem] lg:pt-14.25 xl:grid-cols-[14rem_2.5rem_minmax(0,1fr)_2.5rem]"> <div class="relative col-start-1 row-span-full row-start-1 max-lg:hidden"> <div class="absolute inset-0"> <div class="sticky top-14.25 bottom-0 left-0 h-full max-h-[calc(100dvh-(var(--spacing)*14.25))] w-56 overflow-y-auto p-6"> <nav class="flex flex-col gap-10"> <ul class="flex flex-col gap-2"> <li> <a href="/" class="group inline-flex items-center gap-3 text-base/8 text-gray-600 sm:text-sm/7 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white"> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-book-open size-5 sm:size-4">  <path d="M12 7v14"></path> <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path>  </svg>
+Documentation
+</a> </li> </ul> <div class="flex flex-col gap-3" data-autoscroll="true"> <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400"> GETTING STARTED </h3> <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]"> <li class="-ml-px flex flex-col items-start gap-2"> <a href="/getting-started" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Introduction to Zod </a> </li><li class="-ml-px flex flex-col items-start gap-2"> <a href="/installation" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Installation </a> </li><li class="-ml-px flex flex-col items-start gap-2"> <a href="/quick-start" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Quick Start </a> </li> </ul> </div><div class="flex flex-col gap-3" data-autoscroll="true"> <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400"> CORE CONCEPTS </h3> <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]"> <li class="-ml-px flex flex-col items-start gap-2"> <a href="/core-concepts" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Core Concepts </a> </li> </ul> </div><div class="flex flex-col gap-3" data-autoscroll="true"> <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400"> AGENTS </h3> <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]"> <li class="-ml-px flex flex-col items-start gap-2"> <a href="/agents" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Agents </a> </li><li class="-ml-px flex flex-col items-start gap-2"> <a href="/multi-agent-systems" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Multi-Agent Systems </a> </li> </ul> </div><div class="flex flex-col gap-3" data-autoscroll="true"> <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400"> SKILLS &amp; TOOLS </h3> <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]"> <li class="-ml-px flex flex-col items-start gap-2"> <a href="/skills-and-tools" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 border-gray-950 font-semibold text-gray-950 dark:border-white dark:text-white" type="button" data-headlessui-state=""> Skills &amp; Tools </a> </li> </ul> </div><div class="flex flex-col gap-3" data-autoscroll="true"> <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400"> HARNESS </h3> <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]"> <li class="-ml-px flex flex-col items-start gap-2"> <a href="/harness" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Harness </a> </li><li class="-ml-px flex flex-col items-start gap-2"> <a href="/harness-configuration" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Harness Configuration </a> </li> </ul> </div><div class="flex flex-col gap-3" data-autoscroll="true"> <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400"> PLUGINS </h3> <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]"> <li class="-ml-px flex flex-col items-start gap-2"> <a href="/plugins" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Plugins </a> </li> </ul> </div><div class="flex flex-col gap-3" data-autoscroll="true"> <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400"> STUDIO </h3> <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]"> <li class="-ml-px flex flex-col items-start gap-2"> <a href="/studio" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Studio </a> </li> </ul> </div> </nav> </div> </div> </div> <div class="col-start-2 row-span-5 row-start-1 border-x border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--color-gray-950)]/5 max-lg:hidden dark:[--pattern-fg:var(--color-white)]/10"></div> <div class="relative row-start-1 grid grid-cols-subgrid lg:col-start-3"> <div class="mx-auto grid w-full max-w-2xl grid-cols-1 gap-10 xl:max-w-5xl xl:grid-cols-[minmax(0,1fr)_14rem]"> <div class="px-4 pt-10 pb-24 sm:px-6 xl:pr-0">  <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400" data-section="true"> SKILLS &amp; TOOLS </p> <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white"> Skills &amp; Tools </h1> <p data-description="true" class="mt-6 text-base/7 text-gray-700 dark:text-gray-400"> Extend agent capabilities with skills and tools. </p><div class="prose mt-10" data-content="true"> <article class="prose prose-lg prose-slate dark:prose-invert max-w-none"> <h2 id="skills">Skills</h2>
+<p>Skills are modular capabilities that enhance how agents process information. They are integrated into the agent’s reasoning pipeline.</p>
+<h3 id="built-in-skills">Built-in Skills</h3>
+<p>Zod includes several built-in skills:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Skill</th><th>Description</th><th>Import</th></tr></thead><tbody><tr><td><code>conversation</code></td><td>Natural language dialogue</td><td><code>zod-framework/skills</code></td></tr><tr><td><code>reasoning</code></td><td>Logical thinking</td><td><code>zod-framework/skills</code></td></tr><tr><td><code>coding</code></td><td>Code generation &amp; analysis</td><td><code>zod-framework/skills</code></td></tr><tr><td><code>vision</code></td><td>Image understanding</td><td><code>zod-framework/skills</code></td></tr><tr><td><code>memory</code></td><td>Context retention</td><td><code>zod-framework/skills</code></td></tr><tr><td><code>math</code></td><td>Mathematical computation</td><td><code>zod-framework/skills</code></td></tr><tr><td><code>translation</code></td><td>Language translation</td><td><code>zod-framework/skills</code></td></tr><tr><td><code>summarization</code></td><td>Text summarization</td><td><code>zod-framework/skills</code></td></tr></tbody></table>
+<h3 id="using-skills">Using Skills</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { conversation, reasoning, coding } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;zod-framework/skills&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> developer</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Agent</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  name: </span><span style="color:#9ECBFF">&#39;Developer&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  model: </span><span style="color:#9ECBFF">&#39;gpt-4&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  skills: [conversation, reasoning, coding],</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="creating-custom-skills">Creating Custom Skills</h3>
+<p>You can create custom skills by extending the <code>Skill</code> class:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { Skill } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;zod-framework&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> SentimentAnalysis</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> Skill</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  name</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &#39;sentiment-analysis&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  description</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &#39;Analyze the sentiment of text&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  async</span><span style="color:#B392F0"> process</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">input</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">context</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> sentiment</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">analyze</span><span style="color:#E1E4E8">(input);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      ...</span><span style="color:#E1E4E8">input,</span></span>
+<span class="line"><span style="color:#E1E4E8">      metadata: {</span></span>
+<span class="line"><span style="color:#F97583">        ...</span><span style="color:#E1E4E8">input.metadata,</span></span>
+<span class="line"><span style="color:#E1E4E8">        sentiment: sentiment.score,</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  async</span><span style="color:#B392F0"> analyze</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">text</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">    // Implement sentiment analysis logic</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> { score: </span><span style="color:#79B8FF">0.8</span><span style="color:#E1E4E8">, label: </span><span style="color:#9ECBFF">&#39;positive&#39;</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> sentimentAnalysis</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> SentimentAnalysis</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<h2 id="tools">Tools</h2>
+<p>Tools allow agents to interact with external systems and perform actions in the real world.</p>
+<h3 id="built-in-tools">Built-in Tools</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tool</th><th>Description</th><th>Import</th></tr></thead><tbody><tr><td><code>filesystem</code></td><td>Read/write files</td><td><code>zod-framework/tools</code></td></tr><tr><td><code>web-search</code></td><td>Search the internet</td><td><code>zod-framework/tools</code></td></tr><tr><td><code>database</code></td><td>Query databases</td><td><code>zod-framework/tools</code></td></tr><tr><td><code>terminal</code></td><td>Execute shell commands</td><td><code>zod-framework/tools</code></td></tr><tr><td><code>http</code></td><td>Make HTTP requests</td><td><code>zod-framework/tools</code></td></tr><tr><td><code>email</code></td><td>Send emails</td><td><code>zod-framework/tools</code></td></tr><tr><td><code>git</code></td><td>Git operations</td><td><code>zod-framework/tools</code></td></tr></tbody></table>
+<h3 id="using-tools">Using Tools</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { filesystem, webSearch, terminal } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;zod-framework/tools&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> assistant</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Agent</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  name: </span><span style="color:#9ECBFF">&#39;Assistant&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  model: </span><span style="color:#9ECBFF">&#39;gpt-4&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  skills: [</span><span style="color:#9ECBFF">&#39;conversation&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;reasoning&#39;</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">  tools: [filesystem, webSearch, terminal],</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="creating-custom-tools">Creating Custom Tools</h3>
+<p>Create custom tools by extending the <code>Tool</code> class:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { Tool } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;zod-framework&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> WeatherTool</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> Tool</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  name</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &#39;weather&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  description</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &#39;Get current weather information for a location&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  </span></span>
+<span class="line"><span style="color:#FFAB70">  parameters</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    location: {</span></span>
+<span class="line"><span style="color:#E1E4E8">      type: </span><span style="color:#9ECBFF">&#39;string&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      description: </span><span style="color:#9ECBFF">&#39;The city and country&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      required: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  async</span><span style="color:#B392F0"> execute</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">location</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> response</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> fetch</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#9ECBFF">      `https://api.weather.com/v1/current?location=${</span><span style="color:#E1E4E8">location</span><span style="color:#9ECBFF">}&amp;key=${</span><span style="color:#79B8FF">API_KEY</span><span style="color:#9ECBFF">}`</span></span>
+<span class="line"><span style="color:#E1E4E8">    );</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      temperature: data.temperature,</span></span>
+<span class="line"><span style="color:#E1E4E8">      conditions: data.conditions,</span></span>
+<span class="line"><span style="color:#E1E4E8">      humidity: data.humidity,</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> weather</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> WeatherTool</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<h3 id="tool-security">Tool Security</h3>
+<p>Control tool access and permissions:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { Tool, Permissions } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;zod-framework&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> DatabaseTool</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> Tool</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  name</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &#39;database&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  </span></span>
+<span class="line"><span style="color:#F97583">  async</span><span style="color:#B392F0"> checkPermissions</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">context</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">context.user.isAdmin) {</span></span>
+<span class="line"><span style="color:#F97583">      throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Admin permissions required&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  async</span><span style="color:#B392F0"> execute</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">query</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">    // Only executes if checkPermissions passes</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.db.</span><span style="color:#B392F0">query</span><span style="color:#E1E4E8">(query);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="tool-calling">Tool Calling</h2>
+<p>Agents can automatically choose and call tools:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> agent.</span><span style="color:#B392F0">task</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#9ECBFF">  &#39;Search for recent articles about AI and save them to a file&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  {</span></span>
+<span class="line"><span style="color:#E1E4E8">    tools: [webSearch, filesystem],</span></span>
+<span class="line"><span style="color:#E1E4E8">    autoCall: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// Allow automatic tool calling</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">);</span></span></code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<ol>
+<li><strong>Choose skills deliberately</strong>: Only enable skills the agent actually needs</li>
+<li><strong>Limit tool access</strong>: Follow the principle of least privilege</li>
+<li><strong>Handle tool failures</strong>: Implement error handling for tool execution</li>
+<li><strong>Validate inputs</strong>: Validate tool parameters before execution</li>
+<li><strong>Log tool usage</strong>: Monitor how agents use tools for debugging</li>
+</ol>
+<p>Continue to <a href="/harness">Harness</a> to learn about the orchestration layer.</p> </article> <footer class="mt-16 text-sm leading-6"> <div class="flex items-center justify-between gap-2 text-gray-700 dark:text-gray-200"> <a href="/multi-agent-systems" class="group flex items-center gap-2 hover:text-gray-900 dark:hover:text-white"> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-chevron-left size-4">  <path d="m15 18-6-6 6-6"></path>  </svg> <span>Multi-Agent Systems</span> </a> <a href="/harness" class="group flex items-center gap-2 hover:text-gray-900 dark:hover:text-white"> <span>Harness</span> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-chevron-right size-4">  <path d="m9 18 6-6-6-6"></path>  </svg> </a> </div> </footer> </div>   </div> <div class="max-xl:hidden"> <div> <script type="module">let e=null;function s(){const n=document.querySelectorAll("article h2[id], article h3[id]"),r=document.querySelectorAll("[data-toc-link]");e&&e.disconnect(),e=new IntersectionObserver(t=>{t.forEach(i=>{if(i.isIntersecting){r.forEach(c=>c.classList.remove("text-gray-950","font-semibold","dark:text-white"));const o=document.querySelector(`[data-toc-link="#${i.target.id}"]`);o&&o.classList.add("text-gray-950","font-semibold","dark:text-white")}})},{rootMargin:"-20% 0px -80% 0px"}),n.forEach(t=>e.observe(t))}typeof window<"u"&&setTimeout(s,100);</script> <div class="sticky top-14.25 max-h-[calc(100svh-3.5rem)] overflow-x-hidden px-6 pt-10 pb-24"><div class="flex flex-col gap-3" data-autoscroll="true"><h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">
+On this page
+</h3><ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]">
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#skills" 
+        href="#skills" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Skills
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#built-in-skills" 
+        href="#built-in-skills" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Built-in Skills
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#using-skills" 
+        href="#using-skills" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Using Skills
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#creating-custom-skills" 
+        href="#creating-custom-skills" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Creating Custom Skills
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#tools" 
+        href="#tools" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Tools
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#built-in-tools" 
+        href="#built-in-tools" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Built-in Tools
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#using-tools" 
+        href="#using-tools" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Using Tools
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#creating-custom-tools" 
+        href="#creating-custom-tools" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Creating Custom Tools
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#tool-security" 
+        href="#tool-security" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Tool Security
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#tool-calling" 
+        href="#tool-calling" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Tool Calling
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#best-practices" 
+        href="#best-practices" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Best Practices
+      </a>
+    </li>
+  </ul></div></div> </div> </div> </div> </div> <div class="col-start-4 row-span-5 row-start-1 border-x border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--color-gray-950)]/5 max-lg:hidden dark:[--pattern-fg:var(--color-white)]/10"></div> <div class="col-span-full col-start-2 row-start-2 h-px bg-gray-950/5 dark:bg-white/10"></div> <div class="row-start-3 lg:col-start-3"> <footer class="bg-white text-sm/loose text-gray-950 dark:bg-gray-950 dark:text-white"> <div class="flex gap-4 p-4 md:hidden max-w-2xl lg:max-w-5xl"> <div class="flex flex-1 flex-col gap-10"> <div> <h3 class="font-semibold">Zod</h3> <ul class="mt-4 grid gap-4"> <li><a class="hover:underline" href="/docs">Documentation</a></li> </ul> </div> </div> <div class="flex flex-1 flex-col gap-10"> <div> <h3 class="font-semibold">Resources</h3> <ul class="mt-4 grid gap-4"> <li><a class="hover:underline" href="https://github.com/AR-92/zod-harness">GitHub</a></li> </ul> </div> </div> </div> <div class="mx-auto hidden w-full grid-cols-2 justify-between gap-y-0 md:grid md:grid-cols-2 md:gap-6 md:gap-x-4 lg:gap-8 max-w-2xl lg:max-w-5xl"> <div class="border-x border-b border-gray-950/5 py-10 pl-2 not-md:border-0 md:border-b-0 dark:border-white/10"> <h3 class="font-semibold">Zod</h3> <ul class="mt-4 grid gap-4"> <li><a class="hover:underline" href="/docs">Documentation</a></li> </ul> </div> <div class="border-x border-gray-950/5 py-10 pl-2 not-md:border-0 dark:border-white/10"> <h3 class="font-semibold">Resources</h3> <ul class="mt-4 grid gap-4"> <li><a class="hover:underline" href="https://github.com/AR-92/zod-harness">GitHub</a></li> </ul> </div> </div> </footer> </div> <div class="col-span-full col-start-2 row-start-4 h-px bg-gray-950/5 dark:bg-white/10"></div> <div class="row-start-5 grid lg:col-start-3"> <div class="mx-auto flex w-full flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 max-w-2xl lg:max-w-5xl px-2 py-10"> <div class="flex flex-col gap-4 text-sm/6 text-gray-700 sm:flex-row sm:gap-2 sm:pr-4 dark:text-gray-400"> <span>Copyright © 2026 Zod</span> <span class="max-sm:hidden">·</span> <a class="hover:underline" href="https://github.com/AR-92/zod-harness">GitHub</a> </div> </div> </div> </div> </div> </body>

@@ -1,6 +1,6 @@
 ---
-// DocsSidebar component - Navigation sidebar matching TailwindCSS docs design
-import { BookOpen, Layers, Columns3, Box } from 'lucide-astro';
+// DocsSidebar component - Navigation sidebar for docs
+import { BookOpen } from 'lucide-astro';
 
 interface Props {
   groupedDocs: Record<string, any[]>;
@@ -27,41 +27,14 @@ const categoryOrder = [
   <ul class="flex flex-col gap-2">
     <li>
       <a
-        href="/docs"
+        href="/"
         class:list={[
           "group inline-flex items-center gap-3 text-base/8 text-gray-600 sm:text-sm/7 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white",
-          currentSlug === '' || currentSlug === 'installation' ? "aria-[current]:font-semibold aria-[current]:text-gray-950 dark:aria-[current]:text-white" : ""
+          currentSlug === '' ? "aria-[current]:font-semibold aria-[current]:text-gray-950 dark:aria-[current]:text-white" : ""
         ]}
       >
         <BookOpen class="size-5 sm:size-4" />
         Documentation
-      </a>
-    </li>
-    <li>
-      <a
-        href="/docs"
-        class="group inline-flex items-center gap-3 text-base/8 text-gray-600 sm:text-sm/7 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white"
-      >
-        <Layers class="size-5 sm:size-4" />
-        Components
-      </a>
-    </li>
-    <li>
-      <a
-        href="/docs"
-        class="group inline-flex items-center gap-3 text-base/8 text-gray-600 sm:text-sm/7 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white"
-      >
-        <Columns3 class="size-5 sm:size-4" />
-        Templates
-      </a>
-    </li>
-    <li>
-      <a
-        href="/docs"
-        class="group inline-flex items-center gap-3 text-base/8 text-gray-600 sm:text-sm/7 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white"
-      >
-        <Box class="size-5 sm:size-4" />
-        UI Kit
       </a>
     </li>
   </ul>
@@ -77,7 +50,7 @@ const categoryOrder = [
           return (
             <li class="-ml-px flex flex-col items-start gap-2">
               <a
-                href={`/docs/${doc.slug}`}
+                href={`/${doc.slug}`}
                 class:list={[
                   "inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4",
                   isActive

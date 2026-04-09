@@ -1,0 +1,378 @@
+<!DOCTYPE html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.18.1"><title>Harness - Zod Docs</title><link rel="stylesheet" href="/_astro/_slug_.D11RmaWV.css"></head> <body class="overflow-x-hidden"> <div class="isolate bg-white dark:bg-gray-950"> <div class="fixed inset-x-0 top-0 z-10 border-b border-black/5 dark:border-white/10"> <div class="bg-white dark:bg-gray-950"> <div class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6"> <div class="flex items-center gap-4"> <a class="shrink-0" aria-label="Home" href="/docs"> <img src="/favicon.svg" alt="Zod" class="h-5"> </a> <span class="text-lg font-semibold text-gray-950 dark:text-white">zod</span> <button class="flex items-center gap-0.5 rounded-2xl bg-gray-950/5 py-0.5 pr-1.5 pl-2.5 text-xs/5 font-medium text-gray-950 tabular-nums hover:bg-gray-950/7.5 dark:bg-white/10 dark:text-white dark:hover:bg-white/12.5" aria-label="Select version of library" type="button">
+v1.0
+<svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-chevron-down size-4 text-gray-400">  <path d="m6 9 6 6 6-6"></path>  </svg> </button> </div> <div class="flex items-center gap-6 max-md:hidden"> <button type="button" class="inline-flex items-center gap-1 rounded-full bg-gray-950/2 px-2 py-1 inset-ring inset-ring-gray-950/8 dark:bg-white/5 dark:inset-ring-white/2"> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-search -ml-0.5 size-4 text-gray-600 dark:text-gray-500">  <path d="m21 21-4.34-4.34"></path> <circle cx="11" cy="11" r="8"></circle>  </svg> <kbd class="hidden font-sans text-xs/4 text-gray-500 dark:text-gray-400 [.os-macos_&]:block">⌘K</kbd> <kbd class="hidden font-sans text-xs/4 text-gray-500 not-[.os-macos_&]:block dark:text-gray-400">Ctrl&nbsp;K</kbd> </button> <a class="text-sm/6 text-gray-950 dark:text-white hover:opacity-80 transition-opacity" href="/docs">Documentation</a> </div> <div class="flex items-center gap-2.5 md:hidden"> <button type="button" aria-label="Search" class="inline-grid size-7 place-items-center rounded-md"> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-search size-4">  <path d="m21 21-4.34-4.34"></path> <circle cx="11" cy="11" r="8"></circle>  </svg> </button> <button type="button" class="relative inline-grid size-7 place-items-center rounded-md text-gray-950 hover:bg-gray-950/5 dark:text-white dark:hover:bg-white/10" aria-label="Navigation"> <span class="absolute top-1/2 left-1/2 size-11 -translate-1/2 pointer-fine:hidden"></span> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-ellipsis size-4">  <circle cx="12" cy="12" r="1"></circle> <circle cx="19" cy="12" r="1"></circle> <circle cx="5" cy="12" r="1"></circle>  </svg> </button> </div> </div> </div> </div> <div class="grid min-h-dvh grid-cols-1 grid-rows-[1fr_1px_auto_1px_auto] pt-26.25 lg:grid-cols-[14rem_2.5rem_minmax(0,1fr)_2.5rem] lg:pt-14.25 xl:grid-cols-[14rem_2.5rem_minmax(0,1fr)_2.5rem]"> <div class="relative col-start-1 row-span-full row-start-1 max-lg:hidden"> <div class="absolute inset-0"> <div class="sticky top-14.25 bottom-0 left-0 h-full max-h-[calc(100dvh-(var(--spacing)*14.25))] w-56 overflow-y-auto p-6"> <nav class="flex flex-col gap-10"> <ul class="flex flex-col gap-2"> <li> <a href="/" class="group inline-flex items-center gap-3 text-base/8 text-gray-600 sm:text-sm/7 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white"> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-book-open size-5 sm:size-4">  <path d="M12 7v14"></path> <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path>  </svg>
+Documentation
+</a> </li> </ul> <div class="flex flex-col gap-3" data-autoscroll="true"> <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400"> GETTING STARTED </h3> <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]"> <li class="-ml-px flex flex-col items-start gap-2"> <a href="/getting-started" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Introduction to Zod </a> </li><li class="-ml-px flex flex-col items-start gap-2"> <a href="/installation" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Installation </a> </li><li class="-ml-px flex flex-col items-start gap-2"> <a href="/quick-start" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Quick Start </a> </li> </ul> </div><div class="flex flex-col gap-3" data-autoscroll="true"> <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400"> CORE CONCEPTS </h3> <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]"> <li class="-ml-px flex flex-col items-start gap-2"> <a href="/core-concepts" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Core Concepts </a> </li> </ul> </div><div class="flex flex-col gap-3" data-autoscroll="true"> <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400"> AGENTS </h3> <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]"> <li class="-ml-px flex flex-col items-start gap-2"> <a href="/agents" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Agents </a> </li><li class="-ml-px flex flex-col items-start gap-2"> <a href="/multi-agent-systems" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Multi-Agent Systems </a> </li> </ul> </div><div class="flex flex-col gap-3" data-autoscroll="true"> <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400"> SKILLS &amp; TOOLS </h3> <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]"> <li class="-ml-px flex flex-col items-start gap-2"> <a href="/skills-and-tools" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Skills &amp; Tools </a> </li> </ul> </div><div class="flex flex-col gap-3" data-autoscroll="true"> <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400"> HARNESS </h3> <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]"> <li class="-ml-px flex flex-col items-start gap-2"> <a href="/harness" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 border-gray-950 font-semibold text-gray-950 dark:border-white dark:text-white" type="button" data-headlessui-state=""> Harness </a> </li><li class="-ml-px flex flex-col items-start gap-2"> <a href="/harness-configuration" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Harness Configuration </a> </li> </ul> </div><div class="flex flex-col gap-3" data-autoscroll="true"> <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400"> PLUGINS </h3> <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]"> <li class="-ml-px flex flex-col items-start gap-2"> <a href="/plugins" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Plugins </a> </li> </ul> </div><div class="flex flex-col gap-3" data-autoscroll="true"> <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400"> STUDIO </h3> <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]"> <li class="-ml-px flex flex-col items-start gap-2"> <a href="/studio" class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4" type="button" data-headlessui-state=""> Studio </a> </li> </ul> </div> </nav> </div> </div> </div> <div class="col-start-2 row-span-5 row-start-1 border-x border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--color-gray-950)]/5 max-lg:hidden dark:[--pattern-fg:var(--color-white)]/10"></div> <div class="relative row-start-1 grid grid-cols-subgrid lg:col-start-3"> <div class="mx-auto grid w-full max-w-2xl grid-cols-1 gap-10 xl:max-w-5xl xl:grid-cols-[minmax(0,1fr)_14rem]"> <div class="px-4 pt-10 pb-24 sm:px-6 xl:pr-0">  <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400" data-section="true"> HARNESS </p> <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white"> Harness </h1> <p data-description="true" class="mt-6 text-base/7 text-gray-700 dark:text-gray-400"> Learn about the Zod harness - the orchestration layer for agents. </p><div class="prose mt-10" data-content="true"> <article class="prose prose-lg prose-slate dark:prose-invert max-w-none"> <h2 id="what-is-the-harness">What is the Harness?</h2>
+<p>The harness is the core orchestration layer that manages agent lifecycle, message routing, and execution. It sits between your agents and the outside world.</p>
+<h2 id="architecture">Architecture</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>┌─────────────────────────────────────┐</span></span>
+<span class="line"><span>│         Client Applications          │</span></span>
+<span class="line"><span>└──────────────┬──────────────────────┘</span></span>
+<span class="line"><span>               │</span></span>
+<span class="line"><span>               ▼</span></span>
+<span class="line"><span>┌─────────────────────────────────────┐</span></span>
+<span class="line"><span>│         zod-harness Engine           │</span></span>
+<span class="line"><span>│  ┌─────────────────────────────┐   │</span></span>
+<span class="line"><span>│  │      Message Router          │   │</span></span>
+<span class="line"><span>│  └────────────┬────────────────┘   │</span></span>
+<span class="line"><span>│               │                     │</span></span>
+<span class="line"><span>│  ┌────────────▼────────────────┐   │</span></span>
+<span class="line"><span>│  │     Agent Manager            │   │</span></span>
+<span class="line"><span>│  └────────────┬────────────────┘   │</span></span>
+<span class="line"><span>│               │                     │</span></span>
+<span class="line"><span>│  ┌────────────▼────────────────┐   │</span></span>
+<span class="line"><span>│  │     Execution Engine         │   │</span></span>
+<span class="line"><span>│  └─────────────────────────────┘   │</span></span>
+<span class="line"><span>└─────────────────────────────────────┘</span></span>
+<span class="line"><span>               │</span></span>
+<span class="line"><span>               ▼</span></span>
+<span class="line"><span>┌─────────────────────────────────────┐</span></span>
+<span class="line"><span>│           Zod Agents                 │</span></span>
+<span class="line"><span>└─────────────────────────────────────┘</span></span></code></pre>
+<h2 id="basic-usage">Basic Usage</h2>
+<h3 id="initialize-the-harness">Initialize the Harness</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { Harness } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;zod-framework&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> harness</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Harness</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  maxAgents: </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  timeout: </span><span style="color:#79B8FF">30000</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  logLevel: </span><span style="color:#9ECBFF">&#39;info&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="register-agents">Register Agents</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">harness.</span><span style="color:#B392F0">register</span><span style="color:#E1E4E8">(assistant);</span></span>
+<span class="line"><span style="color:#E1E4E8">harness.</span><span style="color:#B392F0">register</span><span style="color:#E1E4E8">(researcher);</span></span>
+<span class="line"><span style="color:#E1E4E8">harness.</span><span style="color:#B392F0">register</span><span style="color:#E1E4E8">(codeReviewer);</span></span></code></pre>
+<h3 id="start-the-harness">Start the Harness</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">await</span><span style="color:#E1E4E8"> harness.</span><span style="color:#B392F0">start</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Harness started and ready to accept messages&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h2 id="message-routing">Message Routing</h2>
+<p>The harness routes messages to the appropriate agents based on routing rules.</p>
+<h3 id="direct-routing">Direct Routing</h3>
+<p>Send messages to specific agents:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> response</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> harness.</span><span style="color:#B392F0">send</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;assistant&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;Hello!&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h3 id="broadcast">Broadcast</h3>
+<p>Send to all registered agents:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> responses</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> harness.</span><span style="color:#B392F0">broadcast</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;System update: maintenance in 5 minutes&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h3 id="conditional-routing">Conditional Routing</h3>
+<p>Route based on message content:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">harness.</span><span style="color:#B392F0">addRoute</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#B392F0">  match</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">message</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> message.</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;code&#39;</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">  agents: [</span><span style="color:#9ECBFF">&#39;codeReviewer&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;developer&#39;</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">harness.</span><span style="color:#B392F0">addRoute</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#B392F0">  match</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">message</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> message.</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;research&#39;</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">  agents: [</span><span style="color:#9ECBFF">&#39;researcher&#39;</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// This will route to codeReviewer and developer</span></span>
+<span class="line"><span style="color:#F97583">await</span><span style="color:#E1E4E8"> harness.</span><span style="color:#B392F0">route</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Review this code snippet&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h2 id="agent-lifecycle-management">Agent Lifecycle Management</h2>
+<p>The harness manages agent startup, execution, and shutdown.</p>
+<h3 id="startup-hooks">Startup Hooks</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">harness.</span><span style="color:#B392F0">onAgentStart</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">agent</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Starting agent: ${</span><span style="color:#E1E4E8">agent</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">name</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  await</span><span style="color:#E1E4E8"> agent.</span><span style="color:#B392F0">initialize</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="error-handling">Error Handling</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">harness.</span><span style="color:#B392F0">onAgentError</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">agent</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">error</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Agent ${</span><span style="color:#E1E4E8">agent</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">name</span><span style="color:#9ECBFF">} error:`</span><span style="color:#E1E4E8">, error);</span></span>
+<span class="line"><span style="color:#F97583">  await</span><span style="color:#E1E4E8"> agent.</span><span style="color:#B392F0">recover</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="graceful-shutdown">Graceful Shutdown</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">process.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;SIGTERM&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  await</span><span style="color:#E1E4E8"> harness.</span><span style="color:#B392F0">shutdown</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Harness shut down gracefully&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  process.</span><span style="color:#B392F0">exit</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h2 id="execution-modes">Execution Modes</h2>
+<h3 id="synchronous-mode">Synchronous Mode</h3>
+<p>Wait for each agent to complete before proceeding:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> harness</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Harness</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  executionMode: </span><span style="color:#9ECBFF">&#39;sync&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="asynchronous-mode">Asynchronous Mode</h3>
+<p>Run agents in parallel:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> harness</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Harness</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  executionMode: </span><span style="color:#9ECBFF">&#39;async&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="streaming-mode">Streaming Mode</h3>
+<p>Stream responses as they’re generated:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> stream</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> harness.</span><span style="color:#B392F0">sendStream</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;assistant&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;Write a story&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">for</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> chunk</span><span style="color:#F97583"> of</span><span style="color:#E1E4E8"> stream) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  process.stdout.</span><span style="color:#B392F0">write</span><span style="color:#E1E4E8">(chunk);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="monitoring">Monitoring</h2>
+<p>The harness provides built-in monitoring:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// Get harness stats</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> stats</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> harness.</span><span style="color:#B392F0">getStats</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(stats);</span></span>
+<span class="line"><span style="color:#6A737D">// {</span></span>
+<span class="line"><span style="color:#6A737D">//   activeAgents: 3,</span></span>
+<span class="line"><span style="color:#6A737D">//   messagesProcessed: 156,</span></span>
+<span class="line"><span style="color:#6A737D">//   averageResponseTime: 1200,</span></span>
+<span class="line"><span style="color:#6A737D">//   errors: 2,</span></span>
+<span class="line"><span style="color:#6A737D">//   uptime: 3600,</span></span>
+<span class="line"><span style="color:#6A737D">// }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Get agent-specific stats</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> agentStats</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> harness.</span><span style="color:#B392F0">getAgentStats</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;assistant&#39;</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h2 id="middleware">Middleware</h2>
+<p>Add middleware to intercept and modify messages:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">harness.</span><span style="color:#B392F0">use</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#F97583">  async</span><span style="color:#B392F0"> onRequest</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">message</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">next</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Request:&#39;</span><span style="color:#E1E4E8">, message);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#B392F0"> next</span><span style="color:#E1E4E8">(message);</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#F97583">  async</span><span style="color:#B392F0"> onResponse</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">response</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">next</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Response:&#39;</span><span style="color:#E1E4E8">, response);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#B392F0"> next</span><span style="color:#E1E4E8">(response);</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#F97583">  async</span><span style="color:#B392F0"> onError</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">error</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">next</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;Error:&#39;</span><span style="color:#E1E4E8">, error);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#B392F0"> next</span><span style="color:#E1E4E8">(error);</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h2 id="persistence">Persistence</h2>
+<p>Enable message persistence for durability:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { SQLiteStore } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;zod-framework/persistence&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> harness</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Harness</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  persistence: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    store: </span><span style="color:#F97583">new</span><span style="color:#B392F0"> SQLiteStore</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;./data/messages.db&#39;</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">    enabled: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>This ensures messages are not lost during restarts and enables replay functionality.</p>
+<h2 id="best-practices">Best Practices</h2>
+<ol>
+<li><strong>Configure appropriate timeouts</strong>: Balance responsiveness with reliability</li>
+<li><strong>Implement error handlers</strong>: Always handle agent failures gracefully</li>
+<li><strong>Use middleware for logging</strong>: Track message flow for debugging</li>
+<li><strong>Enable persistence</strong>: For production systems, enable message persistence</li>
+<li><strong>Monitor resource usage</strong>: Keep track of agent count and response times</li>
+</ol>
+<p>Continue to <a href="/harness-configuration">Harness Configuration</a> for detailed configuration options.</p> </article> <footer class="mt-16 text-sm leading-6"> <div class="flex items-center justify-between gap-2 text-gray-700 dark:text-gray-200"> <a href="/skills-and-tools" class="group flex items-center gap-2 hover:text-gray-900 dark:hover:text-white"> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-chevron-left size-4">  <path d="m15 18-6-6 6-6"></path>  </svg> <span>Skills &amp; Tools</span> </a> <a href="/harness-configuration" class="group flex items-center gap-2 hover:text-gray-900 dark:hover:text-white"> <span>Harness Configuration</span> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-chevron-right size-4">  <path d="m9 18 6-6-6-6"></path>  </svg> </a> </div> </footer> </div>   </div> <div class="max-xl:hidden"> <div> <script type="module">let e=null;function s(){const n=document.querySelectorAll("article h2[id], article h3[id]"),r=document.querySelectorAll("[data-toc-link]");e&&e.disconnect(),e=new IntersectionObserver(t=>{t.forEach(i=>{if(i.isIntersecting){r.forEach(c=>c.classList.remove("text-gray-950","font-semibold","dark:text-white"));const o=document.querySelector(`[data-toc-link="#${i.target.id}"]`);o&&o.classList.add("text-gray-950","font-semibold","dark:text-white")}})},{rootMargin:"-20% 0px -80% 0px"}),n.forEach(t=>e.observe(t))}typeof window<"u"&&setTimeout(s,100);</script> <div class="sticky top-14.25 max-h-[calc(100svh-3.5rem)] overflow-x-hidden px-6 pt-10 pb-24"><div class="flex flex-col gap-3" data-autoscroll="true"><h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">
+On this page
+</h3><ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]">
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#what-is-the-harness" 
+        href="#what-is-the-harness" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        What is the Harness?
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#architecture" 
+        href="#architecture" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Architecture
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#basic-usage" 
+        href="#basic-usage" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Basic Usage
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#initialize-the-harness" 
+        href="#initialize-the-harness" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Initialize the Harness
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#register-agents" 
+        href="#register-agents" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Register Agents
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#start-the-harness" 
+        href="#start-the-harness" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Start the Harness
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#message-routing" 
+        href="#message-routing" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Message Routing
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#direct-routing" 
+        href="#direct-routing" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Direct Routing
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#broadcast" 
+        href="#broadcast" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Broadcast
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#conditional-routing" 
+        href="#conditional-routing" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Conditional Routing
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#agent-lifecycle-management" 
+        href="#agent-lifecycle-management" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Agent Lifecycle Management
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#startup-hooks" 
+        href="#startup-hooks" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Startup Hooks
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#error-handling" 
+        href="#error-handling" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Error Handling
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#graceful-shutdown" 
+        href="#graceful-shutdown" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Graceful Shutdown
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#execution-modes" 
+        href="#execution-modes" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Execution Modes
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#synchronous-mode" 
+        href="#synchronous-mode" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Synchronous Mode
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#asynchronous-mode" 
+        href="#asynchronous-mode" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Asynchronous Mode
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#streaming-mode" 
+        href="#streaming-mode" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Streaming Mode
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#monitoring" 
+        href="#monitoring" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Monitoring
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#middleware" 
+        href="#middleware" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Middleware
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#persistence" 
+        href="#persistence" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Persistence
+      </a>
+    </li>
+  
+    <li class="-ml-px flex flex-col items-start gap-2">
+      <a 
+        data-toc-link="#best-practices" 
+        href="#best-practices" 
+        class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white pl-5 sm:pl-4 transition-colors"
+      >
+        Best Practices
+      </a>
+    </li>
+  </ul></div></div> </div> </div> </div> </div> <div class="col-start-4 row-span-5 row-start-1 border-x border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--color-gray-950)]/5 max-lg:hidden dark:[--pattern-fg:var(--color-white)]/10"></div> <div class="col-span-full col-start-2 row-start-2 h-px bg-gray-950/5 dark:bg-white/10"></div> <div class="row-start-3 lg:col-start-3"> <footer class="bg-white text-sm/loose text-gray-950 dark:bg-gray-950 dark:text-white"> <div class="flex gap-4 p-4 md:hidden max-w-2xl lg:max-w-5xl"> <div class="flex flex-1 flex-col gap-10"> <div> <h3 class="font-semibold">Zod</h3> <ul class="mt-4 grid gap-4"> <li><a class="hover:underline" href="/docs">Documentation</a></li> </ul> </div> </div> <div class="flex flex-1 flex-col gap-10"> <div> <h3 class="font-semibold">Resources</h3> <ul class="mt-4 grid gap-4"> <li><a class="hover:underline" href="https://github.com/AR-92/zod-harness">GitHub</a></li> </ul> </div> </div> </div> <div class="mx-auto hidden w-full grid-cols-2 justify-between gap-y-0 md:grid md:grid-cols-2 md:gap-6 md:gap-x-4 lg:gap-8 max-w-2xl lg:max-w-5xl"> <div class="border-x border-b border-gray-950/5 py-10 pl-2 not-md:border-0 md:border-b-0 dark:border-white/10"> <h3 class="font-semibold">Zod</h3> <ul class="mt-4 grid gap-4"> <li><a class="hover:underline" href="/docs">Documentation</a></li> </ul> </div> <div class="border-x border-gray-950/5 py-10 pl-2 not-md:border-0 dark:border-white/10"> <h3 class="font-semibold">Resources</h3> <ul class="mt-4 grid gap-4"> <li><a class="hover:underline" href="https://github.com/AR-92/zod-harness">GitHub</a></li> </ul> </div> </div> </footer> </div> <div class="col-span-full col-start-2 row-start-4 h-px bg-gray-950/5 dark:bg-white/10"></div> <div class="row-start-5 grid lg:col-start-3"> <div class="mx-auto flex w-full flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 max-w-2xl lg:max-w-5xl px-2 py-10"> <div class="flex flex-col gap-4 text-sm/6 text-gray-700 sm:flex-row sm:gap-2 sm:pr-4 dark:text-gray-400"> <span>Copyright © 2026 Zod</span> <span class="max-sm:hidden">·</span> <a class="hover:underline" href="https://github.com/AR-92/zod-harness">GitHub</a> </div> </div> </div> </div> </div> </body>

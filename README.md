@@ -7,14 +7,14 @@ Official documentation site for the Zod AI agent platform.
 ```
 zod-docs/
 ├── src/
-│   ├── content/
-│   │   ├── docs/      # Documentation pages (MDX)
-│   │   └── blog/      # Blog posts (Markdown)
-│   ├── layouts/       # Astro layouts
-│   ├── pages/         # Astro pages
-│   ├── components/    # Reusable components
+│   ├── content/docs/    # Documentation pages (MDX)
+│   ├── layouts/         # Docs layout
+│   ├── pages/
+│   │   ├── index.astro      # Docs index
+│   │   └── [...slug].astro  # Dynamic doc pages
+│   ├── components/    # Navbar, Footer, Sidebar, TOC
 │   ├── styles/        # Global CSS
-│   └── utils/         # Utility functions
+│   └── utils/         # Doc utilities
 ├── public/            # Static assets
 └── package.json
 ```
@@ -23,35 +23,26 @@ zod-docs/
 
 ### Install dependencies
 ```bash
-npm install
-# or
 bun install
 ```
 
 ### Start dev server
 ```bash
-npm run dev
-# or
 bun run dev
 ```
 
 ### Build for production
 ```bash
-npm run build
-# or
 bun run build
 ```
 
 ### Preview production build
 ```bash
-npm run preview
-# or
 bun run preview
 ```
 
 ## Content
 
-### Documentation
 Add new documentation pages to `src/content/docs/`. Each file should include frontmatter:
 
 ```mdx
@@ -60,19 +51,6 @@ title: Page Title
 description: Brief description of the page
 category: CATEGORY NAME
 order: 1
----
-```
-
-### Blog Posts
-Add new blog posts to `src/content/blog/`. Each file should include frontmatter:
-
-```md
----
-title: Post Title
-excerpt: Brief summary of the post
-date: 2026-04-09
-author: Author Name
-tags: ['tag1', 'tag2']
 ---
 ```
 
