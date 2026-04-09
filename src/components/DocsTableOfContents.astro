@@ -1,0 +1,51 @@
+---
+// DocsTableOfContents component - Right sidebar "ON THIS PAGE" navigation
+---
+
+<script>
+  // Intersection Observer to highlight active heading
+  let activeObserver: IntersectionObserver | null = null;
+
+  function initObserver() {
+    const headings = document.querySelectorAll('article h2[id], article h3[id]');
+    const tocLinks = document.querySelectorAll('[data-toc-link]');
+
+    if (activeObserver) {
+      activeObserver.disconnect();
+    }
+
+    activeObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            tocLinks.forEach((link) => link.classList.remove('text-gray-950', 'font-semibold', 'dark:text-white'));
+            const activeLink = document.querySelector(`[data-toc-link="#${entry.target.id}"]`);
+            if (activeLink) {
+              activeLink.classList.add('text-gray-950', 'font-semibold', 'dark:text-white');
+            }
+          }
+        });
+      },
+      { rootMargin: '-20% 0px -80% 0px' }
+    );
+
+    headings.forEach((heading) => activeObserver!.observe(heading));
+  }
+
+  if (typeof window !== 'undefined') {
+    setTimeout(initObserver, 100);
+  }
+</script>
+
+{Astro.slots.has('default') ? (
+  <div class="sticky top-14.25 max-h-[calc(100svh-3.5rem)] overflow-x-hidden px-6 pt-10 pb-24">
+    <div class="flex flex-col gap-3" data-autoscroll="true">
+      <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">
+        On this page
+      </h3>
+      <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]">
+        <slot />
+      </ul>
+    </div>
+  </div>
+) : null}

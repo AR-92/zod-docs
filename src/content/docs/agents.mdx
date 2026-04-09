@@ -1,0 +1,159 @@
+---
+title: Agents
+description: Learn how to create, configure, and manage AI agents in Zod.
+category: AGENTS
+order: 1
+prevLink: core-concepts
+prevTitle: Core Concepts
+nextLink: multi-agent-systems
+nextTitle: Multi-Agent Systems
+---
+
+## Creating Agents
+
+Agents are created by instantiating the `Agent` class with configuration options.
+
+### Basic Agent
+
+```javascript
+import { Agent } from 'zod-framework';
+
+const assistant = new Agent({
+  name: 'Assistant',
+  description: 'A helpful AI assistant',
+  model: 'gpt-4',
+  skills: ['conversation', 'reasoning'],
+  tools: ['filesystem'],
+  systemPrompt: `You are a helpful assistant.`,
+});
+```
+
+### Advanced Agent Configuration
+
+```javascript
+import { Agent } from 'zod-framework';
+
+const codeReviewer = new Agent({
+  name: 'CodeReviewer',
+  description: 'Reviews code for bugs and security issues',
+  model: 'gpt-4-turbo',
+  skills: ['coding', 'reasoning', 'vision'],
+  tools: ['filesystem', 'terminal', 'web-search'],
+  systemPrompt: `You are an expert code reviewer. Focus on:
+    - Security vulnerabilities
+    - Performance issues
+    - Code quality
+    - Best practices`,
+  maxTokens: 4096,
+  temperature: 0.2,
+  timeout: 60000,
+});
+```
+
+## Agent Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `name` | string | Unique identifier for the agent |
+| `description` | string | Human-readable description |
+| `model` | string | The AI model to use |
+| `skills` | array | List of skills to enable |
+| `tools` | array | List of tools to enable |
+| `systemPrompt` | string | System prompt for the agent |
+| `maxTokens` | number | Maximum tokens in response |
+| `temperature` | number | Creativity level (0-1) |
+| `timeout` | number | Request timeout in ms |
+
+## Agent Methods
+
+### message()
+
+Send a conversational message to an agent:
+
+```javascript
+const response = await agent.message('What is the capital of France?');
+console.log(response.content);
+```
+
+### task()
+
+Assign a specific task to an agent:
+
+```javascript
+const result = await agent.task('Review the code in src/auth.js');
+console.log(result.feedback);
+```
+
+### chat()
+
+Start an interactive chat session:
+
+```javascript
+const chat = agent.chat();
+await chat.send('Hello!');
+const reply = await chat.receive();
+```
+
+## Agent State
+
+Agents maintain internal state that can be accessed and modified:
+
+```javascript
+// Get agent state
+const state = agent.getState();
+console.log(state.messageCount);
+
+// Update state
+agent.setState({ customData: 'value' });
+```
+
+## Agent Events
+
+Listen to agent events for monitoring and debugging:
+
+```javascript
+agent.on('message', (msg) => {
+  console.log('Agent received:', msg);
+});
+
+agent.on('response', (res) => {
+  console.log('Agent responded:', res);
+});
+
+agent.on('error', (err) => {
+  console.error('Agent error:', err);
+});
+```
+
+## Agent Lifecycle Hooks
+
+Define custom behavior at different lifecycle stages:
+
+```javascript
+const agent = new Agent({
+  name: 'CustomAgent',
+  model: 'gpt-4',
+  skills: ['conversation'],
+  hooks: {
+    async onReceive(message) {
+      console.log('Processing message:', message);
+    },
+    async onRespond(response) {
+      console.log('Generated response:', response);
+    },
+    async onError(error) {
+      console.error('Error occurred:', error);
+    },
+  },
+});
+```
+
+## Best Practices
+
+1. **Keep system prompts specific**: More specific prompts lead to better results
+2. **Limit tool access**: Only give agents the tools they need
+3. **Set appropriate timeouts**: Balance between waiting and failing fast
+4. **Monitor agent state**: Use events and state to debug issues
+5. **Use skills wisely**: More skills aren't always better - choose relevant ones
+
+Continue to [Multi-Agent Systems](/docs/multi-agent-systems) to learn how to coordinate multiple agents.

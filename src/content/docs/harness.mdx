@@ -1,0 +1,245 @@
+---
+title: Harness
+description: Learn about the Zod harness - the orchestration layer for agents.
+category: HARNESS
+order: 1
+prevLink: skills-and-tools
+prevTitle: Skills & Tools
+nextLink: harness-configuration
+nextTitle: Harness Configuration
+---
+
+## What is the Harness?
+
+The harness is the core orchestration layer that manages agent lifecycle, message routing, and execution. It sits between your agents and the outside world.
+
+## Architecture
+
+```
+┌─────────────────────────────────────┐
+│         Client Applications          │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│         zod-harness Engine           │
+│  ┌─────────────────────────────┐   │
+│  │      Message Router          │   │
+│  └────────────┬────────────────┘   │
+│               │                     │
+│  ┌────────────▼────────────────┐   │
+│  │     Agent Manager            │   │
+│  └────────────┬────────────────┘   │
+│               │                     │
+│  ┌────────────▼────────────────┐   │
+│  │     Execution Engine         │   │
+│  └─────────────────────────────┘   │
+└─────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│           Zod Agents                 │
+└─────────────────────────────────────┘
+```
+
+## Basic Usage
+
+### Initialize the Harness
+
+```javascript
+import { Harness } from 'zod-framework';
+
+const harness = new Harness({
+  maxAgents: 10,
+  timeout: 30000,
+  logLevel: 'info',
+});
+```
+
+### Register Agents
+
+```javascript
+harness.register(assistant);
+harness.register(researcher);
+harness.register(codeReviewer);
+```
+
+### Start the Harness
+
+```javascript
+await harness.start();
+console.log('Harness started and ready to accept messages');
+```
+
+## Message Routing
+
+The harness routes messages to the appropriate agents based on routing rules.
+
+### Direct Routing
+
+Send messages to specific agents:
+
+```javascript
+const response = await harness.send('assistant', 'Hello!');
+```
+
+### Broadcast
+
+Send to all registered agents:
+
+```javascript
+const responses = await harness.broadcast('System update: maintenance in 5 minutes');
+```
+
+### Conditional Routing
+
+Route based on message content:
+
+```javascript
+harness.addRoute({
+  match: (message) => message.includes('code'),
+  agents: ['codeReviewer', 'developer'],
+});
+
+harness.addRoute({
+  match: (message) => message.includes('research'),
+  agents: ['researcher'],
+});
+
+// This will route to codeReviewer and developer
+await harness.route('Review this code snippet');
+```
+
+## Agent Lifecycle Management
+
+The harness manages agent startup, execution, and shutdown.
+
+### Startup Hooks
+
+```javascript
+harness.onAgentStart(async (agent) => {
+  console.log(`Starting agent: ${agent.name}`);
+  await agent.initialize();
+});
+```
+
+### Error Handling
+
+```javascript
+harness.onAgentError(async (agent, error) => {
+  console.error(`Agent ${agent.name} error:`, error);
+  await agent.recover();
+});
+```
+
+### Graceful Shutdown
+
+```javascript
+process.on('SIGTERM', async () => {
+  await harness.shutdown();
+  console.log('Harness shut down gracefully');
+  process.exit(0);
+});
+```
+
+## Execution Modes
+
+### Synchronous Mode
+
+Wait for each agent to complete before proceeding:
+
+```javascript
+const harness = new Harness({
+  executionMode: 'sync',
+});
+```
+
+### Asynchronous Mode
+
+Run agents in parallel:
+
+```javascript
+const harness = new Harness({
+  executionMode: 'async',
+});
+```
+
+### Streaming Mode
+
+Stream responses as they're generated:
+
+```javascript
+const stream = await harness.sendStream('assistant', 'Write a story');
+
+for await (const chunk of stream) {
+  process.stdout.write(chunk);
+}
+```
+
+## Monitoring
+
+The harness provides built-in monitoring:
+
+```javascript
+// Get harness stats
+const stats = harness.getStats();
+console.log(stats);
+// {
+//   activeAgents: 3,
+//   messagesProcessed: 156,
+//   averageResponseTime: 1200,
+//   errors: 2,
+//   uptime: 3600,
+// }
+
+// Get agent-specific stats
+const agentStats = harness.getAgentStats('assistant');
+```
+
+## Middleware
+
+Add middleware to intercept and modify messages:
+
+```javascript
+harness.use({
+  async onRequest(message, next) {
+    console.log('Request:', message);
+    return next(message);
+  },
+  async onResponse(response, next) {
+    console.log('Response:', response);
+    return next(response);
+  },
+  async onError(error, next) {
+    console.error('Error:', error);
+    return next(error);
+  },
+});
+```
+
+## Persistence
+
+Enable message persistence for durability:
+
+```javascript
+import { SQLiteStore } from 'zod-framework/persistence';
+
+const harness = new Harness({
+  persistence: {
+    store: new SQLiteStore('./data/messages.db'),
+    enabled: true,
+  },
+});
+```
+
+This ensures messages are not lost during restarts and enables replay functionality.
+
+## Best Practices
+
+1. **Configure appropriate timeouts**: Balance responsiveness with reliability
+2. **Implement error handlers**: Always handle agent failures gracefully
+3. **Use middleware for logging**: Track message flow for debugging
+4. **Enable persistence**: For production systems, enable message persistence
+5. **Monitor resource usage**: Keep track of agent count and response times
+
+Continue to [Harness Configuration](/docs/harness-configuration) for detailed configuration options.

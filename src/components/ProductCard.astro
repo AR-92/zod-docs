@@ -1,0 +1,38 @@
+---
+// Product card component - reusable card for product listings
+interface Props {
+  href: string;
+  title: string;
+  count: string;
+  aspectRatio?: string;
+}
+
+const { href, title, count, aspectRatio = "708/480" } = Astro.props;
+---
+
+<li class="max-sm:line-y sm:max-lg:nth-[2n+1]:line-y lg:max-xl:nth-[3n+1]:line-y xl:nth-[4n+1]:line-y">
+  <a class="block transition hover:bg-gray-950/2.5 dark:hover:bg-white/4" href={href}>
+    <div class="relative p-2">
+      <img
+        src="/placeholder.svg"
+        class={`aspect-[${aspectRatio.replace('/', '_')}] rounded-md outline -outline-offset-1 outline-gray-950/10 sm:rounded-xl lg:rounded-xl dark:hidden`}
+        width="708"
+        height="480"
+        alt=""
+        loading="lazy"
+      />
+      <img
+        src="/placeholder.svg"
+        class={`aspect-[${aspectRatio.replace('/', '_')}] rounded-md outline -outline-offset-1 outline-white/10 sm:rounded-xl lg:rounded-xl not-dark:hidden`}
+        width="708"
+        height="480"
+        alt=""
+        loading="lazy"
+      />
+    </div>
+    <div class="px-4 py-2 sm:px-2">
+      <p class="text-sm/6 font-medium dark:text-white">{title}</p>
+      <p class="font-mono text-xs/6 tracking-wide text-gray-600 dark:text-gray-400">{count}</p>
+    </div>
+  </a>
+</li>

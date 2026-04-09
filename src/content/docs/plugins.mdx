@@ -1,0 +1,231 @@
+---
+title: Plugins
+description: Extend Zod with custom plugins and integrations.
+category: PLUGINS
+order: 1
+prevLink: harness-configuration
+prevTitle: Harness Configuration
+nextLink: studio
+nextTitle: Studio
+---
+
+## What are Plugins?
+
+Plugins are modular extensions that add functionality to the Zod framework without modifying core code. They can hook into various lifecycle events and extend capabilities.
+
+## Using Built-in Plugins
+
+Zod ships with several built-in plugins:
+
+```javascript
+import { logging, metrics, auth } from 'zod-framework/plugins';
+
+const harness = new Harness({
+  plugins: [logging, metrics, auth],
+});
+```
+
+## Built-in Plugins
+
+### Logging Plugin
+
+Provides structured logging:
+
+```javascript
+import { logging } from 'zod-framework/plugins';
+
+harness.use(logging({
+  level: 'info',
+  format: 'json', // or 'text', 'pretty'
+  output: 'stdout', // or file path
+  rotation: {
+    maxSize: '100MB',
+    maxFiles: 10,
+  },
+}));
+```
+
+### Metrics Plugin
+
+Collects performance metrics:
+
+```javascript
+import { metrics } from 'zod-framework/plugins';
+
+harness.use(metrics({
+  enabled: true,
+  endpoint: '/metrics',
+  collectInterval: 60000, // 1 minute
+  exporters: ['prometheus'], // or 'datadog', 'statsd'
+}));
+```
+
+### Authentication Plugin
+
+Add authentication to harness endpoints:
+
+```javascript
+import { auth } from 'zod-framework/plugins';
+
+harness.use(auth({
+  strategy: 'jwt', // or 'api-key', 'oauth'
+  secret: process.env.JWT_SECRET,
+  expiresIn: '24h',
+}));
+```
+
+## Creating Custom Plugins
+
+Create a plugin by implementing the Plugin interface:
+
+```javascript
+import { Plugin } from 'zod-framework';
+
+class CustomPlugin extends Plugin {
+  name = 'custom-plugin';
+  version = '1.0.0';
+
+  async install(harness) {
+    // Called when plugin is installed
+    console.log('Custom plugin installed');
+  }
+
+  async onStart(harness) {
+    // Called when harness starts
+    console.log('Harness started with custom plugin');
+  }
+
+  async onRequest(message, next) {
+    // Intercept requests
+    console.log('Received:', message);
+    return next(message);
+  }
+
+  async onResponse(response, next) {
+    // Intercept responses
+    console.log('Sending:', response);
+    return next(response);
+  }
+
+  async onStop(harness) {
+    // Called when harness stops
+    console.log('Harness stopped, cleaning up');
+  }
+}
+
+export const customPlugin = new CustomPlugin();
+```
+
+## Plugin Hooks
+
+Plugins can hook into these lifecycle events:
+
+| Hook | Description |
+|------|-------------|
+| `install` | When plugin is first installed |
+| `onStart` | When harness starts |
+| `onStop` | When harness stops |
+| `onRequest` | Before processing a message |
+| `onResponse` | Before sending a response |
+| `onError` | When an error occurs |
+| `onAgentRegister` | When an agent is registered |
+| `onAgentUnregister` | When an agent is unregistered |
+
+## Plugin Configuration
+
+Configure plugins in `zod.config.js`:
+
+```javascript
+export default {
+  plugins: {
+    logging: {
+      enabled: true,
+      level: 'debug',
+    },
+    metrics: {
+      enabled: true,
+      endpoint: '/metrics',
+    },
+    customPlugin: {
+      option1: 'value1',
+      option2: 'value2',
+    },
+  },
+};
+```
+
+## Third-Party Plugins
+
+Install community plugins via npm:
+
+```bash
+npm install zod-plugin-slack
+npm install zod-plugin-discord
+npm install zod-plugin-openai
+```
+
+Use them in your project:
+
+```javascript
+import { slack } from 'zod-plugin-slack';
+import { discord } from 'zod-plugin-discord';
+
+harness.use(slack({
+  webhookUrl: process.env.SLACK_WEBHOOK_URL,
+  channel: '#alerts',
+}));
+
+harness.use(discord({
+  botToken: process.env.DISCORD_BOT_TOKEN,
+  channelId: '123456789',
+}));
+```
+
+## Plugin Best Practices
+
+1. **Keep plugins focused**: Each plugin should have a single responsibility
+2. **Handle errors gracefully**: Don't let plugin errors crash the harness
+3. **Document configuration**: Clearly document all plugin options
+4. **Test in isolation**: Test plugins independently from the harness
+5. **Version your plugins**: Follow semantic versioning
+6. **Provide defaults**: Always provide sensible defaults
+
+## Example: Notification Plugin
+
+Here's a complete example of a notification plugin:
+
+```javascript
+import { Plugin } from 'zod-framework';
+
+class NotificationPlugin extends Plugin {
+  name = 'notifications';
+  
+  constructor(options = {}) {
+    super();
+    this.providers = [];
+    this.events = options.events || ['error'];
+  }
+
+  async install(harness) {
+    harness.on('error', (error) => this.notify(error));
+  }
+
+  addProvider(provider) {
+    this.providers.push(provider);
+  }
+
+  async notify(event) {
+    for (const provider of this.providers) {
+      try {
+        await provider.send(event);
+      } catch (error) {
+        console.error('Failed to send notification:', error);
+      }
+    }
+  }
+}
+
+export const notifications = new NotificationPlugin();
+```
+
+Continue to [Studio](/docs/studio) to learn about the visual development interface.

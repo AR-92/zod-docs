@@ -1,0 +1,185 @@
+---
+title: Skills & Tools
+description: Extend agent capabilities with skills and tools.
+category: SKILLS & TOOLS
+order: 1
+prevLink: multi-agent-systems
+prevTitle: Multi-Agent Systems
+nextLink: harness
+nextTitle: Harness
+---
+
+## Skills
+
+Skills are modular capabilities that enhance how agents process information. They are integrated into the agent's reasoning pipeline.
+
+### Built-in Skills
+
+Zod includes several built-in skills:
+
+| Skill | Description | Import |
+|-------|-------------|--------|
+| `conversation` | Natural language dialogue | `zod-framework/skills` |
+| `reasoning` | Logical thinking | `zod-framework/skills` |
+| `coding` | Code generation & analysis | `zod-framework/skills` |
+| `vision` | Image understanding | `zod-framework/skills` |
+| `memory` | Context retention | `zod-framework/skills` |
+| `math` | Mathematical computation | `zod-framework/skills` |
+| `translation` | Language translation | `zod-framework/skills` |
+| `summarization` | Text summarization | `zod-framework/skills` |
+
+### Using Skills
+
+```javascript
+import { conversation, reasoning, coding } from 'zod-framework/skills';
+
+const developer = new Agent({
+  name: 'Developer',
+  model: 'gpt-4',
+  skills: [conversation, reasoning, coding],
+});
+```
+
+### Creating Custom Skills
+
+You can create custom skills by extending the `Skill` class:
+
+```javascript
+import { Skill } from 'zod-framework';
+
+class SentimentAnalysis extends Skill {
+  name = 'sentiment-analysis';
+  description = 'Analyze the sentiment of text';
+
+  async process(input, context) {
+    const sentiment = await this.analyze(input);
+    return {
+      ...input,
+      metadata: {
+        ...input.metadata,
+        sentiment: sentiment.score,
+      },
+    };
+  }
+
+  async analyze(text) {
+    // Implement sentiment analysis logic
+    return { score: 0.8, label: 'positive' };
+  }
+}
+
+export const sentimentAnalysis = new SentimentAnalysis();
+```
+
+## Tools
+
+Tools allow agents to interact with external systems and perform actions in the real world.
+
+### Built-in Tools
+
+| Tool | Description | Import |
+|------|-------------|--------|
+| `filesystem` | Read/write files | `zod-framework/tools` |
+| `web-search` | Search the internet | `zod-framework/tools` |
+| `database` | Query databases | `zod-framework/tools` |
+| `terminal` | Execute shell commands | `zod-framework/tools` |
+| `http` | Make HTTP requests | `zod-framework/tools` |
+| `email` | Send emails | `zod-framework/tools` |
+| `git` | Git operations | `zod-framework/tools` |
+
+### Using Tools
+
+```javascript
+import { filesystem, webSearch, terminal } from 'zod-framework/tools';
+
+const assistant = new Agent({
+  name: 'Assistant',
+  model: 'gpt-4',
+  skills: ['conversation', 'reasoning'],
+  tools: [filesystem, webSearch, terminal],
+});
+```
+
+### Creating Custom Tools
+
+Create custom tools by extending the `Tool` class:
+
+```javascript
+import { Tool } from 'zod-framework';
+
+class WeatherTool extends Tool {
+  name = 'weather';
+  description = 'Get current weather information for a location';
+  
+  parameters = {
+    location: {
+      type: 'string',
+      description: 'The city and country',
+      required: true,
+    },
+  };
+
+  async execute({ location }) {
+    const response = await fetch(
+      `https://api.weather.com/v1/current?location=${location}&key=${API_KEY}`
+    );
+    const data = await response.json();
+    
+    return {
+      temperature: data.temperature,
+      conditions: data.conditions,
+      humidity: data.humidity,
+    };
+  }
+}
+
+export const weather = new WeatherTool();
+```
+
+### Tool Security
+
+Control tool access and permissions:
+
+```javascript
+import { Tool, Permissions } from 'zod-framework';
+
+class DatabaseTool extends Tool {
+  name = 'database';
+  
+  async checkPermissions(context) {
+    if (!context.user.isAdmin) {
+      throw new Error('Admin permissions required');
+    }
+    return true;
+  }
+
+  async execute(query) {
+    // Only executes if checkPermissions passes
+    return this.db.query(query);
+  }
+}
+```
+
+## Tool Calling
+
+Agents can automatically choose and call tools:
+
+```javascript
+const result = await agent.task(
+  'Search for recent articles about AI and save them to a file',
+  {
+    tools: [webSearch, filesystem],
+    autoCall: true, // Allow automatic tool calling
+  }
+);
+```
+
+## Best Practices
+
+1. **Choose skills deliberately**: Only enable skills the agent actually needs
+2. **Limit tool access**: Follow the principle of least privilege
+3. **Handle tool failures**: Implement error handling for tool execution
+4. **Validate inputs**: Validate tool parameters before execution
+5. **Log tool usage**: Monitor how agents use tools for debugging
+
+Continue to [Harness](/docs/harness) to learn about the orchestration layer.

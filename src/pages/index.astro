@@ -1,0 +1,573 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import {
+  Globe,
+  ArrowLeftRight,
+  Cpu,
+  Check,
+  Bot,
+  Network,
+  Shield,
+  Workflow,
+  Database,
+  Plug,
+  Puzzle,
+  FileText,
+  Wrench,
+  ChevronRight,
+  Sparkles,
+  Github,
+  Twitter,
+} from 'lucide-astro';
+
+const agentLoopSteps = [
+  { step: "1", title: "User Message", desc: "You type a message in the browser interface." },
+  { step: "2", title: "Context Building", desc: "System gathers system prompt, conversation history, and available tools." },
+  { step: "3", title: "AI Processing", desc: "Everything is sent to the AI model for processing." },
+  { step: "4", title: "Response Generation", desc: "AI streams back responses in real-time, potentially requesting tool usage." },
+  { step: "5", title: "Tool Execution", desc: "Tools run with proper error handling — some in parallel, some sequentially." },
+  { step: "6", title: "Completion", desc: "Results feed back to the AI until it finishes responding." },
+];
+
+const builtInExtensions = [
+  { name: "Agent Extension", desc: "Manages the AI agent — streaming responses, tool calls, and conversation steering.", icon: "bot" },
+  { name: "OpenRouter Extension", desc: "Connects to AI model providers with streaming, reasoning tokens, and multi-model support.", icon: "network" },
+  { name: "Policy Extension", desc: "Enforces budget limits, step limits, approval gating, and loop detection.", icon: "shield" },
+  { name: "Project Extension", desc: "Handles workflow orchestration — organizing complex tasks into graphs that can branch and loop.", icon: "workflow" },
+  { name: "Storage Extension", desc: "Manages persistent state — key-value memory, message queues, session persistence, and auto-save.", icon: "database" },
+  { name: "Plugin System", desc: "Loads additional capabilities from the internet at runtime without modifying core code.", icon: "plug" },
+];
+
+const useCases = [
+  { useCase: "Automated code review", components: "Agent + Skill + File tools" },
+  { useCase: "Internal knowledge base Q&A", components: "Agent + Search tools + Prompt templates" },
+  { useCase: "DevOps automation dashboard", components: "Agent + Shell tools + GitHub integration" },
+  { useCase: "Customer support chatbot", components: "Skill + Agent + Database tools + Email tools" },
+  { useCase: "Data processing pipeline", components: "Agent + SQL tools + Python tools + Visualization prompts" },
+  { useCase: "Documentation generator", components: "Agent + File tools + Markdown prompts" },
+  { useCase: "Security scanning", components: "Agent + Shell tools + Custom security prompts" },
+  { useCase: "Meeting summarizer", components: "Agent + Audio transcription + Prompt templates" },
+];
+
+const lookingForward = [
+  { title: "Enhanced MCP Integration", desc: "Better support for Model Context Protocol servers" },
+  { title: "Multi-Agent Orchestration", desc: "Multiple AI agents working together on complex tasks" },
+  { title: "Distributed Deployment", desc: "Running across multiple machines for scale" },
+  { title: "Advanced Policies", desc: "More sophisticated rule engines for enterprise needs" },
+  { title: "Analytics Dashboard", desc: "Usage metrics and insights for optimization" },
+];
+---
+
+<BaseLayout>
+  <div class="isolate bg-white dark:bg-gray-950">
+    <Navbar />
+
+    <div class="grid grid-cols-1">
+      {/* Content Area */}
+      <div class="col-start-1">
+
+          {/* Hero Section */}
+          <div class="relative before:absolute before:top-0 before:h-px before:w-[200vw] before:bg-gray-950/5 dark:before:bg-white/10 before:-left-[100vw] after:absolute after:bottom-0 after:h-px after:w-[200vw] after:bg-gray-950/5 dark:after:bg-white/10 after:-left-[100vw]">
+            {/* Typography Demo */}
+            <div class="flex h-16 items-end px-2 font-mono text-xs/6 whitespace-pre text-black/20 max-sm:px-4 sm:h-24 dark:text-white/25">
+              <span class="hidden max-sm:inline">text-4xl </span>
+              <span class="hidden sm:max-md:inline">text-5xl </span>
+              <span class="hidden lg:max-xl:inline">text-6xl </span>
+              <span class="hidden xl:inline">text-8xl </span>
+              <span class="inline dark:hidden">text-gray-950 </span>
+              <span class="hidden dark:inline">text-white </span>
+              tracking-tighter <span class="max-sm:hidden">text-balance</span>
+            </div>
+
+            {/* Hero Heading */}
+            <div class="px-2 py-2">
+              <h1 class="text-4xl tracking-tighter text-balance max-lg:font-medium max-sm:px-4 sm:text-5xl lg:text-6xl xl:text-8xl">
+                Build, customize, and interact with AI agents.
+              </h1>
+            </div>
+
+            {/* Hero Description */}
+            <div class="px-2 py-2">
+              <p class="max-w-[--breakpoint-md] text-lg/7 font-medium text-gray-600 max-sm:px-4 dark:text-gray-400">
+                A modular AI agent platform with a core engine that handles AI orchestration — from tool execution to policy enforcement to workflow management. Packed with capabilities like{" "}
+                <span class="font-mono text-[1.0625rem] text-cyan-500 dark:text-cyan-400">Agents</span>,{" "}
+                <span class="font-mono text-[1.0625rem] text-cyan-500 dark:text-cyan-400">Skills</span>,{" "}
+                <span class="font-mono text-[1.0625rem] text-cyan-500 dark:text-cyan-400">Tools</span> and{" "}
+                <span class="font-mono text-[1.0625rem] text-cyan-500 dark:text-cyan-400">Prompts</span> that can be composed to build any AI assistant.
+              </p>
+            </div>
+
+            {/* CTA Buttons */}
+            <div class="mt-10 px-2 max-sm:px-4">
+              <a href="/agent/" class="group relative inline-block px-2 py-1.5 text-base/6 text-cyan-700 dark:text-cyan-300">
+                <span class="absolute inset-0 border border-dashed border-cyan-300/60 bg-cyan-400/10 group-hover:bg-cyan-400/15 dark:border-cyan-300/30"></span>
+                Get started
+                <svg width="5" height="5" viewBox="0 0 5 5" class="absolute top-[-2px] left-[-2px] fill-cyan-300 dark:fill-cyan-300/50"><path d="M2 0h1v2h2v1h-2v2h-1v-2h-2v-1h2z"></path></svg>
+                <svg width="5" height="5" viewBox="0 0 5 5" class="absolute top-[-2px] right-[-2px] fill-cyan-300 dark:fill-cyan-300/50"><path d="M2 0h1v2h2v1h-2v2h-1v-2h-2v-1h2z"></path></svg>
+                <svg width="5" height="5" viewBox="0 0 5 5" class="absolute bottom-[-2px] left-[-2px] fill-cyan-300 dark:fill-cyan-300/50"><path d="M2 0h1v2h2v1h-2v2h-1v-2h-2v-1h2z"></path></svg>
+                <svg width="5" height="5" viewBox="0 0 5 5" class="absolute right-[-2px] bottom-[-2px] fill-cyan-300 dark:fill-cyan-300/50"><path d="M2 0h1v2h2v1h-2v2h-1v-2h-2v-1h2z"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Architecture Section */}
+          <div id="architecture" class="scroll-mt-20 relative before:absolute before:top-0 before:h-px before:w-[200vw] before:bg-gray-950/5 dark:before:bg-white/10 before:-left-[100vw] after:absolute after:bottom-0 after:h-px after:w-[200vw] after:bg-gray-950/5 dark:after:bg-white/10 after:-left-[100vw]">
+            <div class="px-2 py-2">
+              <h2 class="text-3xl tracking-tight text-balance max-sm:px-4 sm:text-4xl lg:text-5xl font-semibold">
+                Platform Architecture
+              </h2>
+            </div>
+            <div class="mt-8 px-2 py-2 max-sm:px-4">
+              <p class="max-w-[--breakpoint-md] text-lg/7 font-medium text-gray-600 dark:text-gray-400">
+                Three layers working together: the browser interface you interact with, the bridge that translates commands, and the core engine that handles all the AI logic.
+              </p>
+            </div>
+
+            <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {/* zod-client Card */}
+              <div class="group relative rounded-2xl border border-gray-950/5 dark:border-white/10 bg-gray-50/50 dark:bg-white/5 p-6 hover:bg-white dark:hover:bg-white/10 transition-colors">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="inline-grid size-10 place-items-center rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+                    <Globe class="size-5" />
+                  </div>
+                  <h3 class="text-lg font-semibold">zod-client</h3>
+                </div>
+                <p class="text-sm/6 text-gray-600 dark:text-gray-400">
+                  The browser interface built with SolidJS and Tailwind. Provides real-time chat, model selection, event debugging, and plugin loading — all running entirely in your browser.
+                </p>
+              </div>
+
+              {/* harness.js Bridge Card */}
+              <div class="group relative rounded-2xl border border-gray-950/5 dark:border-white/10 bg-gray-50/50 dark:bg-white/5 p-6 hover:bg-white dark:hover:bg-white/10 transition-colors">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="inline-grid size-10 place-items-center rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400">
+                    <ArrowLeftRight class="size-5" />
+                  </div>
+                  <h3 class="text-lg font-semibold">harness.js Bridge</h3>
+                </div>
+                <p class="text-sm/6 text-gray-600 dark:text-gray-400">
+                  Acts as a translator between the browser and the AI engine. Takes commands from the user interface, passes them to the core engine, and brings responses back for display.
+                </p>
+              </div>
+
+              {/* zod-harness Engine Card */}
+              <div class="group relative rounded-2xl border border-gray-950/5 dark:border-white/10 bg-gray-50/50 dark:bg-white/5 p-6 hover:bg-white dark:hover:bg-white/10 transition-colors sm:col-span-2 lg:col-span-1">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="inline-grid size-10 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                    <Cpu class="size-5" />
+                  </div>
+                  <h3 class="text-lg font-semibold">zod-harness Engine</h3>
+                </div>
+                <p class="text-sm/6 text-gray-600 dark:text-gray-400">
+                  The brain of the operation. Manages conversation history, decides when to use tools, connects to AI providers like OpenRouter, enforces safety rules, and orchestrates complex workflows.
+                </p>
+              </div>
+            </div>
+
+            {/* Design Principles */}
+            <div class="mt-16">
+              <h3 class="px-2 text-xl font-semibold max-sm:px-4">Design Principles</h3>
+              <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                <div class="flex gap-4 px-2 max-sm:px-4">
+                  <Check class="shrink-0 mt-0.5 size-5 text-emerald-500" />
+                  <div>
+                    <h4 class="font-medium">Complete by Default</h4>
+                    <p class="text-sm/6 text-gray-600 dark:text-gray-400">All essential functionality is built into the core engine — no extra pieces needed for basic use.</p>
+                  </div>
+                </div>
+                <div class="flex gap-4 px-2 max-sm:px-4">
+                  <Check class="shrink-0 mt-0.5 size-5 text-emerald-500" />
+                  <div>
+                    <h4 class="font-medium">Optional Extensions</h4>
+                    <p class="text-sm/6 text-gray-600 dark:text-gray-400">Add specialized capabilities as modules when needed, but they're never required.</p>
+                  </div>
+                </div>
+                <div class="flex gap-4 px-2 max-sm:px-4">
+                  <Check class="shrink-0 mt-0.5 size-5 text-emerald-500" />
+                  <div>
+                    <h4 class="font-medium">Event-Driven Communication</h4>
+                    <p class="text-sm/6 text-gray-600 dark:text-gray-400">Components communicate through a messaging system, making the system flexible and easy to extend.</p>
+                  </div>
+                </div>
+                <div class="flex gap-4 px-2 max-sm:px-4">
+                  <Check class="shrink-0 mt-0.5 size-5 text-emerald-500" />
+                  <div>
+                    <h4 class="font-medium">Lifecycle Awareness</h4>
+                    <p class="text-sm/6 text-gray-600 dark:text-gray-400">Everything tracks its state properly, from initialization through active use to clean shutdown.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Core Engine Section */}
+          <div id="how-it-works" class="scroll-mt-20 relative before:absolute before:top-0 before:h-px before:w-[200vw] before:bg-gray-950/5 dark:before:bg-white/10 before:-left-[100vw] after:absolute after:bottom-0 after:h-px after:w-[200vw] after:bg-gray-950/5 dark:after:bg-white/10 after:-left-[100vw]">
+            <div class="px-2 py-2">
+              <h2 class="text-3xl tracking-tight text-balance max-sm:px-4 sm:text-4xl lg:text-5xl font-semibold">
+                The Core Engine
+              </h2>
+            </div>
+            <div class="mt-8 px-2 py-2 max-sm:px-4">
+              <p class="max-w-[--breakpoint-md] text-lg/7 font-medium text-gray-600 dark:text-gray-400">
+                At the heart of Zod is the AgentHarness — the central orchestrator that coordinates extensions, tools, events, and lifecycle management.
+              </p>
+            </div>
+
+            {/* How the Agent Loop Works */}
+            <div class="mt-12">
+              <div class="px-2 py-2 max-sm:px-4">
+                <h3 class="text-xl font-semibold mb-6">The Agent Loop</h3>
+              </div>
+              <div class="px-2 max-sm:px-4">
+                  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {agentLoopSteps.map((item) => (
+                      <div class="flex gap-4 p-4 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-950/5 dark:border-white/10">
+                        <div class="shrink-0 inline-grid size-8 place-items-center rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 font-mono text-sm font-bold">
+                          {item.step}
+                        </div>
+                        <div>
+                          <h4 class="font-medium">{item.title}</h4>
+                          <p class="text-sm/6 text-gray-600 dark:text-gray-400">{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Built-in Extensions */}
+            <div class="mt-16">
+              <h3 class="px-2 text-xl font-semibold max-sm:px-4 mb-6">Built-in Extensions</h3>
+              <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {builtInExtensions.map((ext) => (
+                  <div class="flex gap-4 p-4 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-950/5 dark:border-white/10">
+                    {ext.icon === 'bot' && <Bot class="shrink-0 size-5 text-gray-500 dark:text-gray-400" />}
+                    {ext.icon === 'network' && <Network class="shrink-0 size-5 text-gray-500 dark:text-gray-400" />}
+                    {ext.icon === 'shield' && <Shield class="shrink-0 size-5 text-gray-500 dark:text-gray-400" />}
+                    {ext.icon === 'workflow' && <Workflow class="shrink-0 size-5 text-gray-500 dark:text-gray-400" />}
+                    {ext.icon === 'database' && <Database class="shrink-0 size-5 text-gray-500 dark:text-gray-400" />}
+                    {ext.icon === 'plug' && <Plug class="shrink-0 size-5 text-gray-500 dark:text-gray-400" />}
+                    <div>
+                      <h4 class="font-medium">{ext.name}</h4>
+                      <p class="text-sm/6 text-gray-600 dark:text-gray-400">{ext.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Capabilities Section */}
+          <div id="capabilities" class="scroll-mt-20 relative before:absolute before:top-0 before:h-px before:w-[200vw] before:bg-gray-950/5 dark:before:bg-white/10 before:-left-[100vw] after:absolute after:bottom-0 after:h-px after:w-[200vw] after:bg-gray-950/5 dark:after:bg-white/10 after:-left-[100vw]">
+            <div class="px-2 py-2">
+              <h2 class="text-3xl tracking-tight text-balance max-sm:px-4 sm:text-4xl lg:text-5xl font-semibold">
+                Capabilities
+              </h2>
+            </div>
+            <div class="mt-8 px-2 py-2 max-sm:px-4">
+              <p class="max-w-[--breakpoint-md] text-lg/7 font-medium text-gray-600 dark:text-gray-400">
+                Four types of pluggable capabilities that extend what the AI can do — each serving a distinct purpose.
+              </p>
+            </div>
+
+            <div class="mt-12 grid gap-6 sm:grid-cols-2">
+              {/* Agents */}
+              <div class="rounded-2xl border border-gray-950/5 dark:border-white/10 bg-gradient-to-br from-cyan-50/50 to-transparent dark:from-cyan-950/20 p-6">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="inline-grid size-10 place-items-center rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+                    <Bot class="size-5" />
+                  </div>
+                  <h3 class="text-lg font-semibold">Agents</h3>
+                </div>
+                <p class="text-sm/6 text-gray-600 dark:text-gray-400 mb-4">
+                  Sub-AIs with their own personality, knowledge, and tools. Like hiring a specialist for specific tasks.
+                </p>
+                <ul class="space-y-2 text-sm/6 text-gray-600 dark:text-gray-400">
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-cyan-500" /> Code Reviewer — reviews code for bugs and best practices</li>
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-cyan-500" /> Technical Writer — converts descriptions into documentation</li>
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-cyan-500" /> Data Analyst — understands datasets and explains findings</li>
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-cyan-500" /> Security Auditor — scans for vulnerabilities</li>
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-cyan-500" /> DevOps Engineer — manages deployment and infrastructure</li>
+                </ul>
+              </div>
+
+              {/* Extensions */}
+              <div class="rounded-2xl border border-gray-950/5 dark:border-white/10 bg-gradient-to-br from-purple-50/50 to-transparent dark:from-purple-950/20 p-6">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="inline-grid size-10 place-items-center rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400">
+                    <Puzzle class="size-5" />
+                  </div>
+                  <h3 class="text-lg font-semibold">Extensions</h3>
+                </div>
+                <p class="text-sm/6 text-gray-600 dark:text-gray-400 mb-4">
+                  Modular components that define <em>what</em> capabilities are available — not <em>how</em> they work.
+                </p>
+                <ul class="space-y-2 text-sm/6 text-gray-600 dark:text-gray-400">
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-purple-500" /> Agent Extension — manages AI agent lifecycle</li>
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-purple-500" /> OpenRouter Extension — connects to AI providers</li>
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-purple-500" /> Policy Extension — enforces safety rules</li>
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-purple-500" /> Project Extension — handles workflow orchestration</li>
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-purple-500" /> Storage Extension — manages persistent state</li>
+                </ul>
+              </div>
+
+              {/* Skills */}
+              <div class="rounded-2xl border border-gray-950/5 dark:border-white/10 bg-gradient-to-br from-amber-50/50 to-transparent dark:from-amber-950/20 p-6">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="inline-grid size-10 place-items-center rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
+                    <FileText class="size-5" />
+                  </div>
+                  <h3 class="text-lg font-semibold">Skills</h3>
+                </div>
+                <p class="text-sm/6 text-gray-600 dark:text-gray-400 mb-4">
+                  Expert personas that define <em>how</em> the AI thinks and communicates — not <em>what</em> tools it can use.
+                </p>
+                <ul class="space-y-2 text-sm/6 text-gray-600 dark:text-gray-400">
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-amber-500" /> JavaScript Expert — deep knowledge of patterns and pitfalls</li>
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-amber-500" /> Python Data Scientist — thinks statistically</li>
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-amber-500" /> Customer Support — specific tone and escalation rules</li>
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-amber-500" /> Security Mindset — always considers security implications</li>
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-amber-500" /> Concise Communicator — brief, to-the-point answers</li>
+                </ul>
+              </div>
+
+              {/* Tools */}
+              <div class="rounded-2xl border border-gray-950/5 dark:border-white/10 bg-gradient-to-br from-emerald-50/50 to-transparent dark:from-emerald-950/20 p-6">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="inline-grid size-10 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                    <Wrench class="size-5" />
+                  </div>
+                  <h3 class="text-lg font-semibold">Tools</h3>
+                </div>
+                <p class="text-sm/6 text-gray-600 dark:text-gray-400 mb-4">
+                  Actions the AI can take in the world — the most powerful extension type for external system interaction.
+                </p>
+                <ul class="space-y-2 text-sm/6 text-gray-600 dark:text-gray-400">
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-emerald-500" /> File Operations — read, write, search, list directories</li>
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-emerald-500" /> Shell Commands — run terminal commands and scripts</li>
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-emerald-500" /> Web Operations — fetch pages, call APIs, send notifications</li>
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-emerald-500" /> Database Operations — query, migrate, manage data</li>
+                  <li class="flex items-start gap-2"><ChevronRight class="shrink-0 mt-0.5 size-4 text-emerald-500" /> Integrations — GitHub, Slack, Email, Cloud providers</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* How They Work Together */}
+            <div class="mt-12 px-2 max-sm:px-4">
+              <h3 class="text-xl font-semibold mb-6">How They Work Together</h3>
+              <div class="grid gap-4 sm:grid-cols-3">
+                <div class="p-4 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-950/5 dark:border-white/10">
+                  <h4 class="font-medium text-sm mb-2">Code Review System</h4>
+                  <p class="text-xs/6 text-gray-600 dark:text-gray-400">Security skill + Code reviewer agent + Review prompt template + File reading tools</p>
+                </div>
+                <div class="p-4 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-950/5 dark:border-white/10">
+                  <h4 class="font-medium text-sm mb-2">Customer Support</h4>
+                  <p class="text-xs/6 text-gray-600 dark:text-gray-400">Support skill + Response prompt + Database lookup tools + Email tools</p>
+                </div>
+                <div class="p-4 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-950/5 dark:border-white/10">
+                  <h4 class="font-medium text-sm mb-2">Data Pipeline</h4>
+                  <p class="text-xs/6 text-gray-600 dark:text-gray-400">Data analyst agent + SQL tools + Python tools + Visualization prompts</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Safety & Policy Section */}
+          <div id="features" class="scroll-mt-20 relative before:absolute before:top-0 before:h-px before:w-[200vw] before:bg-gray-950/5 dark:before:bg-white/10 before:-left-[100vw] after:absolute after:bottom-0 after:h-px after:w-[200vw] after:bg-gray-950/5 dark:after:bg-white/10 after:-left-[100vw]">
+            <div class="px-2 py-2">
+              <h2 class="text-3xl tracking-tight text-balance max-sm:px-4 sm:text-4xl lg:text-5xl font-semibold">
+                Safety & Policy
+              </h2>
+            </div>
+            <div class="mt-8 px-2 py-2 max-sm:px-4">
+              <p class="max-w-[--breakpoint-md] text-lg/7 font-medium text-gray-600 dark:text-gray-400">
+                Multiple layers of built-in protection keep your AI usage safe and predictable.
+              </p>
+            </div>
+
+            <div class="mt-12 grid gap-6 sm:grid-cols-2">
+              <div class="flex gap-4 p-5 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-950/5 dark:border-white/10">
+                <Shield class="shrink-0 size-6 text-emerald-500" />
+                <div>
+                  <h3 class="font-semibold">Budget Limits</h3>
+                  <p class="text-sm/6 text-gray-600 dark:text-gray-400 mt-1">
+                    Maximum tokens and cost per task prevents runaway usage. The system stops automatically when limits are reached.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 p-5 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-950/5 dark:border-white/10">
+                <Workflow class="shrink-0 size-6 text-blue-500" />
+                <div>
+                  <h3 class="font-semibold">Step Limits</h3>
+                  <p class="text-sm/6 text-gray-600 dark:text-gray-400 mt-1">
+                    Maximum steps and tool calls per task prevents infinite loops and excessive tool usage.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 p-5 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-950/5 dark:border-white/10">
+                <ArrowLeftRight class="shrink-0 size-6 text-amber-500" />
+                <div>
+                  <h3 class="font-semibold">Loop Detection</h3>
+                  <p class="text-sm/6 text-gray-600 dark:text-gray-400 mt-1">
+                    Recognizes when the AI is repeating the same action and suggests taking a different approach.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 p-5 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-950/5 dark:border-white/10">
+                <Check class="shrink-0 size-6 text-purple-500" />
+                <div>
+                  <h3 class="font-semibold">Approval Gating</h3>
+                  <p class="text-sm/6 text-gray-600 dark:text-gray-400 mt-1">
+                    Sensitive tools require explicit human approval before running. Users authorize dangerous operations.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Tool Permissions */}
+            <div class="mt-8 px-2 max-sm:px-4">
+              <h3 class="text-lg font-semibold mb-4">Tool Permissions</h3>
+              <p class="text-sm/6 text-gray-600 dark:text-gray-400 mb-4">
+                Tools can declare their safety characteristics — whether they modify data or just read, whether they're safe to run in parallel, whether they could cause damage, and custom permission checks.
+              </p>
+            </div>
+          </div>
+
+          {/* Use Cases Section */}
+          <div class="relative before:absolute before:top-0 before:h-px before:w-[200vw] before:bg-gray-950/5 dark:before:bg-white/10 before:-left-[100vw] after:absolute after:bottom-0 after:h-px after:w-[200vw] after:bg-gray-950/5 dark:after:bg-white/10 after:-left-[100vw]">
+            <div class="px-2 py-2">
+              <h2 class="text-3xl tracking-tight text-balance max-sm:px-4 sm:text-4xl lg:text-5xl font-semibold">
+                Real-World Use Cases
+              </h2>
+            </div>
+            <div class="mt-8 px-2 py-2 max-sm:px-4">
+              <p class="max-w-[--breakpoint-md] text-lg/7 font-medium text-gray-600 dark:text-gray-400">
+                Concrete examples of what organizations have built with Zod.
+              </p>
+            </div>
+
+            <div class="mt-10 px-2 max-sm:px-4 overflow-x-auto">
+              <table class="w-full text-sm text-left border border-gray-950/5 dark:border-white/10 rounded-xl overflow-hidden">
+                <thead class="bg-gray-50 dark:bg-white/5 text-gray-700 dark:text-gray-300 font-medium">
+                  <tr>
+                    <th class="px-4 py-3 border-b border-gray-950/5 dark:border-white/10">Use Case</th>
+                    <th class="px-4 py-3 border-b border-gray-950/5 dark:border-white/10">Components Used</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {useCases.map((row) => (
+                    <tr class="border-b border-gray-950/5 dark:border-white/10 last:border-b-0 hover:bg-gray-50 dark:hover:bg-white/5">
+                      <td class="px-4 py-3 font-medium">{row.useCase}</td>
+                      <td class="px-4 py-3 font-mono text-xs">{row.components}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Looking Forward Section */}
+          <div class="relative before:absolute before:top-0 before:h-px before:w-[200vw] before:bg-gray-950/5 dark:before:bg-white/10 before:-left-[100vw] after:absolute after:bottom-0 after:h-px after:w-[200vw] after:bg-gray-950/5 dark:after:bg-white/10 after:-left-[100vw]">
+            <div class="px-2 py-2">
+              <h2 class="text-3xl tracking-tight text-balance max-sm:px-4 sm:text-4xl lg:text-5xl font-semibold">
+                Looking Forward
+              </h2>
+            </div>
+            <div class="mt-8 px-2 py-2 max-sm:px-4">
+              <p class="max-w-[--breakpoint-md] text-lg/7 font-medium text-gray-600 dark:text-gray-400">
+                The platform is designed to grow. Here's what's coming next.
+              </p>
+            </div>
+
+            <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {lookingForward.map((item) => (
+                <div class="flex items-start gap-3 p-4 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-950/5 dark:border-white/10">
+                  <Sparkles class="shrink-0 size-[18px] text-cyan-500" />
+                  <div>
+                    <h4 class="font-medium text-sm">{item.title}</h4>
+                    <p class="text-xs/6 text-gray-600 dark:text-gray-400">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Final CTA */}
+          <div class="relative before:absolute before:top-0 before:h-px before:w-[200vw] before:bg-gray-950/5 dark:before:bg-white/10 before:-left-[100vw] after:absolute after:bottom-0 after:h-px after:w-[200vw] after:bg-gray-950/5 dark:after:bg-white/10 after:-left-[100vw]">
+            <div class="px-2 py-2 text-center">
+              <h2 class="text-2xl tracking-tight text-balance sm:text-3xl lg:text-4xl font-semibold">
+                Ready to build with AI agents?
+              </h2>
+            </div>
+            <div class="px-2 py-2 text-center">
+              <p class="text-lg/7 font-medium text-gray-600 dark:text-gray-400">
+                Start chatting with the demo or explore the documentation to learn more.
+              </p>
+            </div>
+            <div class="mt-8 px-2 max-sm:px-4 flex items-center justify-center gap-4">
+                <a href="/agent/" class="group relative px-2 py-1.5 text-base/6 text-cyan-700 dark:text-cyan-300">
+                  <span class="absolute inset-0 border border-dashed border-cyan-300/60 bg-cyan-400/10 group-hover:bg-cyan-400/15 dark:border-cyan-300/30"></span>
+                  Try Demo
+                  <svg width="5" height="5" viewBox="0 0 5 5" class="absolute top-[-2px] left-[-2px] fill-cyan-300 dark:fill-cyan-300/50"><path d="M2 0h1v2h2v1h-2v2h-1v-2h-2v-1h2z"></path></svg>
+                  <svg width="5" height="5" viewBox="0 0 5 5" class="absolute top-[-2px] right-[-2px] fill-cyan-300 dark:fill-cyan-300/50"><path d="M2 0h1v2h2v1h-2v2h-1v-2h-2v-1h2z"></path></svg>
+                  <svg width="5" height="5" viewBox="0 0 5 5" class="absolute bottom-[-2px] left-[-2px] fill-cyan-300 dark:fill-cyan-300/50"><path d="M2 0h1v2h2v1h-2v2h-1v-2h-2v-1h2z"></path></svg>
+                  <svg width="5" height="5" viewBox="0 0 5 5" class="absolute right-[-2px] bottom-[-2px] fill-cyan-300 dark:fill-cyan-300/50"><path d="M2 0h1v2h2v1h-2v2h-1v-2h-2v-1h2z"></path></svg>
+                </a>
+            </div>
+          </div>
+        </div>
+
+
+        {/* Footer */}
+        <Footer />
+
+        {/* Footer Bottom */}
+        <div class="col-start-1 relative before:absolute before:top-0 before:h-px before:w-[200vw] before:bg-gray-950/5 dark:before:bg-white/10 before:-left-[100vw] after:absolute after:bottom-0 after:h-px after:w-[200vw] after:bg-gray-950/5 dark:after:bg-white/10 after:-left-[100vw]">
+          <div class="px-2 py-2">
+            <div class="mx-auto flex w-full flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 px-4 md:px-6 lg:px-8">
+              <div class="flex flex-col gap-4 text-sm/6 text-gray-700 sm:flex-row sm:gap-2">
+                <span>Copyright © 2026 Zod Framework</span>
+                <span class="max-sm:hidden">·</span>
+                <a class="hover:underline" href="#">Trademark Policy</a>
+              </div>
+              <div class="flex items-center gap-4">
+                <a href="#" class="text-gray-600 hover:text-gray-950 dark:text-gray-400 dark:hover:text-white transition-colors">
+                  <Github class="size-5" />
+                </a>
+                <a href="#" class="text-gray-600 hover:text-gray-950 dark:text-gray-400 dark:hover:text-white transition-colors">
+                  <Twitter class="size-5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer Bottom */}
+        <div class="col-start-1 relative before:absolute before:top-0 before:h-px before:w-[200vw] before:bg-gray-950/5 dark:before:bg-white/10 before:-left-[100vw] after:absolute after:bottom-0 after:h-px after:w-[200vw] after:bg-gray-950/5 dark:after:bg-white/10 after:-left-[100vw]">
+          <div class="px-2 py-2">
+            <div class="mx-auto flex w-full flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 px-4 md:px-6 lg:px-8">
+              <div class="flex flex-col gap-4 text-sm/6 text-gray-700 sm:flex-row sm:gap-2">
+                <span>Copyright © 2026 Zod Framework</span>
+                <span class="max-sm:hidden">·</span>
+                <a class="hover:underline" href="#">Trademark Policy</a>
+              </div>
+              <div class="flex items-center gap-4">
+                <a href="#" class="text-gray-600 hover:text-gray-950 dark:text-gray-400 dark:hover:text-white transition-colors">
+                  <Github class="size-5" />
+                </a>
+                <a href="#" class="text-gray-600 hover:text-gray-950 dark:text-gray-400 dark:hover:text-white transition-colors">
+                  <Twitter class="size-5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</BaseLayout>

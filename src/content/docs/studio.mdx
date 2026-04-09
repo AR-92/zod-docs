@@ -1,0 +1,244 @@
+---
+title: Studio
+description: Use Zod Studio for visual agent development and debugging.
+category: STUDIO
+order: 1
+prevLink: plugins
+prevTitle: Plugins
+nextLink: api-reference
+nextTitle: API Reference
+---
+
+## What is Zod Studio?
+
+Zod Studio is a visual development environment for building and debugging agent systems. It provides real-time insights into agent behavior, message flow, and system performance.
+
+## Installation
+
+Install Zod Studio globally:
+
+```bash
+npm install -g zod-studio
+```
+
+## Starting Studio
+
+Launch the studio:
+
+```bash
+npx zod-studio
+```
+
+This opens a web interface at `http://localhost:3000`.
+
+## Connect to Your Project
+
+Connect Studio to your running harness:
+
+```bash
+npx zod-studio connect --port 8080
+```
+
+Or configure in `zod.config.js`:
+
+```javascript
+export default {
+  studio: {
+    enabled: true,
+    port: 3000,
+    autoConnect: true,
+  },
+};
+```
+
+## Features
+
+### Agent Inspector
+
+View detailed information about each agent:
+
+- Current state
+- Message history
+- Active skills and tools
+- Performance metrics
+- Error logs
+
+Select an agent from the sidebar to inspect its state.
+
+### Message Flow Visualization
+
+See how messages flow between agents in real-time:
+
+- Visual graph of message routing
+- Timing information
+- Success/failure status
+- Payload preview
+
+Click on any message to see its full content.
+
+### Live Console
+
+Interact with agents directly:
+
+```
+> assistant Hello!
+< assistant Hello! How can I help you today?
+
+> researcher What are the latest AI trends?
+< researcher [Researching...]
+```
+
+### Performance Dashboard
+
+Monitor system performance:
+
+- Messages per second
+- Average response time
+- Error rate
+- Resource usage (CPU, memory)
+
+### Timeline
+
+View a chronological timeline of all events:
+
+- Agent registrations
+- Message sends/receives
+- Tool executions
+- Errors and warnings
+
+Filter by event type to focus on specific activities.
+
+## Debugging
+
+### Breakpoints
+
+Set breakpoints to pause execution:
+
+```javascript
+// In your agent code
+import { breakpoint } from 'zod-studio';
+
+await breakpoint('before-tool-execution');
+```
+
+Execution will pause and you can inspect state in Studio.
+
+### State Inspection
+
+View and modify agent state in real-time:
+
+1. Select an agent in the sidebar
+2. Click the "State" tab
+3. View current state as JSON
+4. Edit values and click "Apply"
+
+### Replay
+
+Replay previous sessions:
+
+1. Open the "History" panel
+2. Select a session
+3. Click "Replay"
+
+This replays all messages and responses exactly as they occurred.
+
+## Testing
+
+Run tests directly from Studio:
+
+```bash
+npx zod-studio test
+```
+
+### Create Test Scenarios
+
+Define test scenarios:
+
+```javascript
+// tests/scenarios.js
+export default [
+  {
+    name: 'Simple conversation',
+    steps: [
+      { agent: 'assistant', message: 'Hello' },
+      { expect: 'greeting' },
+    ],
+  },
+  {
+    name: 'Tool usage',
+    steps: [
+      { agent: 'assistant', message: 'Read file.txt' },
+      { expect: 'tool-call', tool: 'filesystem' },
+      { expect: 'file-content' },
+    ],
+  },
+];
+```
+
+### Run Tests
+
+Click the "Test" button in Studio or run:
+
+```bash
+npx zod-studio test --scenario="Simple conversation"
+```
+
+## Export and Share
+
+### Export Session
+
+Export a debugging session:
+
+```bash
+npx zod-studio export --session=abc123 --output=./debug-session.json
+```
+
+### Share Configuration
+
+Share your harness configuration with the team:
+
+```bash
+npx zod-studio share-config
+```
+
+This generates a shareable link.
+
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `Ctrl/Cmd + K` | Quick command palette |
+| `Ctrl/Cmd + B` | Toggle sidebar |
+| `Ctrl/Cmd + E` | Focus console |
+| `Ctrl/Cmd + /` | Show shortcuts |
+| `Space` | Play/pause (during replay) |
+
+## Best Practices
+
+1. **Use Studio during development**: Real-time feedback speeds up development
+2. **Set breakpoints strategically**: Pause at critical decision points
+3. **Monitor performance dashboard**: Catch bottlenecks early
+4. **Save test scenarios**: Create a library of test cases
+5. **Export debugging sessions**: Share issues with team members
+
+## Troubleshooting
+
+### Studio Won't Connect
+
+- Ensure harness is running with studio enabled
+- Check port configuration
+- Verify CORS settings
+
+### Missing Messages
+
+- Check filter settings in timeline
+- Ensure log level is set to appropriate verbosity
+- Verify persistence is enabled
+
+### Slow Performance
+
+- Limit number of visible messages
+- Disable unnecessary plugins
+- Check resource usage in dashboard
+
+Continue to [API Reference](/docs/api-reference) for complete API documentation.

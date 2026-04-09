@@ -1,0 +1,185 @@
+---
+title: Multi-Agent Systems
+description: Build and coordinate systems with multiple collaborating agents.
+category: AGENTS
+order: 2
+prevLink: agents
+prevTitle: Agents
+nextLink: skills-and-tools
+nextTitle: Skills & Tools
+---
+
+## Why Multi-Agent Systems?
+
+Complex tasks often benefit from multiple specialized agents working together. Multi-agent systems enable:
+
+- **Separation of concerns**: Each agent focuses on its specialty
+- **Parallel processing**: Multiple agents work simultaneously
+- **Specialization**: Different models for different tasks
+- **Collaboration**: Agents can delegate and share information
+
+## Creating a Multi-Agent System
+
+### Define Multiple Agents
+
+```javascript
+import { Agent } from 'zod-framework';
+
+const researcher = new Agent({
+  name: 'Researcher',
+  model: 'gpt-4',
+  skills: ['reasoning', 'web-search'],
+  systemPrompt: 'You are a research specialist. Find accurate information on any topic.',
+});
+
+const writer = new Agent({
+  name: 'Writer',
+  model: 'gpt-4',
+  skills: ['conversation', 'coding'],
+  systemPrompt: 'You are a technical writer. Create clear, concise documentation.',
+});
+
+const reviewer = new Agent({
+  name: 'Reviewer',
+  model: 'gpt-4-turbo',
+  skills: ['reasoning'],
+  systemPrompt: 'You are a quality reviewer. Check for accuracy and completeness.',
+});
+```
+
+## Agent Communication Patterns
+
+### Sequential Pattern
+
+Agents work in a sequence, each building on the previous output:
+
+```javascript
+import { Pipeline } from 'zod-framework';
+
+const pipeline = new Pipeline([
+  researcher,
+  writer,
+  reviewer,
+]);
+
+const result = await pipeline.execute('Research AI trends and write an article');
+```
+
+### Parallel Pattern
+
+Multiple agents work simultaneously:
+
+```javascript
+import { Parallel } from 'zod-framework';
+
+const parallel = new Parallel([
+  researcher,
+  writer,
+]);
+
+const [research, draft] = await parallel.execute('Create a comprehensive report');
+```
+
+### Collaborative Pattern
+
+Agents work together, exchanging messages:
+
+```javascript
+import { Collaboration } from 'zod-framework';
+
+const collab = new Collaboration({
+  agents: [researcher, writer, reviewer],
+  strategy: 'round-robin', // or 'leader-follower', 'consensus'
+  maxRounds: 5,
+});
+
+const result = await collab.execute('Write a technical whitepaper');
+```
+
+## Agent Delegation
+
+Agents can delegate tasks to other agents:
+
+```javascript
+const manager = new Agent({
+  name: 'Manager',
+  model: 'gpt-4',
+  skills: ['reasoning'],
+  systemPrompt: `You are a project manager. Delegate tasks to specialists.`,
+});
+
+// Delegate from within an agent
+await manager.task('Research the latest AI trends', { delegateTo: researcher });
+```
+
+## Shared Memory
+
+Agents can share state through a common memory space:
+
+```javascript
+import { MemorySpace } from 'zod-framework';
+
+const memory = new MemorySpace();
+
+researcher.setMemory(memory);
+writer.setMemory(memory);
+reviewer.setMemory(memory);
+
+// Any agent can read/write shared data
+memory.set('research_data', researchResults);
+const data = memory.get('research_data');
+```
+
+## Coordination Strategies
+
+### Leader-Follower
+
+One agent coordinates the work of others:
+
+```javascript
+import { LeaderFollower } from 'zod-framework';
+
+const system = new LeaderFollower({
+  leader: manager,
+  followers: [researcher, writer, reviewer],
+});
+```
+
+### Consensus
+
+All agents must agree on decisions:
+
+```javascript
+import { Consensus } from 'zod-framework';
+
+const decision = await Consensus.vote({
+  agents: [researcher, writer, reviewer],
+  proposal: 'Use GPT-4 for this task',
+  threshold: 0.66, // 66% agreement needed
+});
+```
+
+## Debugging Multi-Agent Systems
+
+Use the Zod Studio visual interface to monitor agent interactions:
+
+```bash
+npx zod-studio watch
+```
+
+This provides:
+- Real-time message flow visualization
+- Agent state inspection
+- Performance metrics
+- Error tracking
+
+## Best Practices
+
+1. **Design clear boundaries**: Each agent should have a specific role
+2. **Minimize dependencies**: Reduce coupling between agents
+3. **Use appropriate models**: Match model capability to task complexity
+4. **Monitor communication**: Track message passing between agents
+5. **Handle failures gracefully**: Implement retry and fallback logic
+6. **Test incrementally**: Start with 2 agents, then add more
+
+Continue to [Skills & Tools](/docs/skills-and-tools) to learn about extending agent capabilities.

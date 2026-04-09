@@ -1,0 +1,88 @@
+---
+title: Installation
+description: Install Zod and set up your development environment.
+category: GETTING STARTED
+order: 2
+prevLink: getting-started
+prevTitle: Introduction to Zod
+nextLink: quick-start
+nextTitle: Quick Start
+---
+
+## Prerequisites
+
+Before installing Zod, ensure you have the following installed:
+
+- **Node.js** (v18 or higher)
+- **npm**, **yarn**, **pnpm**, or **bun** package manager
+
+## Installation
+
+Install Zod using your preferred package manager:
+
+```bash
+npm install zod-framework
+```
+
+Or with other package managers:
+
+```bash
+yarn add zod-framework
+pnpm add zod-framework
+bun add zod-framework
+```
+
+## Project Setup
+
+After installation, initialize Zod in your project:
+
+```bash
+npx zod init
+```
+
+This will create the basic project structure:
+
+```
+my-zod-project/
+├── zod.config.js
+├── agents/
+│   └── assistant.js
+├── skills/
+└── tools/
+```
+
+## Configuration
+
+Create a `zod.config.js` file in your project root:
+
+```javascript
+export default {
+  agents: {
+    assistant: {
+      model: 'gpt-4',
+      skills: ['conversation', 'reasoning'],
+      tools: ['filesystem', 'web-search'],
+    },
+  },
+  harness: {
+    maxAgents: 10,
+    timeout: 30000,
+  },
+};
+```
+
+## Verify Installation
+
+Run the following command to verify your installation:
+
+```bash
+npx zod doctor
+```
+
+This will check your configuration and report any issues.
+
+## Next Steps
+
+- Follow the [Quick Start](/docs/quick-start) guide to create your first agent
+- Explore the [Core Concepts](/docs/core-concepts) documentation
+- Join our [Discord](https://discord.gg/zod) community for help

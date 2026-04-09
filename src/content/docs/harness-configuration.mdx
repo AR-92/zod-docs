@@ -1,0 +1,252 @@
+---
+title: Harness Configuration
+description: Complete reference for configuring the Zod harness.
+category: HARNESS
+order: 2
+prevLink: harness
+prevTitle: Harness
+nextLink: plugins
+nextTitle: Plugins
+---
+
+## Configuration File
+
+The harness is configured via `zod.config.js` in your project root.
+
+## Basic Configuration
+
+```javascript
+export default {
+  harness: {
+    maxAgents: 10,
+    timeout: 30000,
+    logLevel: 'info',
+    executionMode: 'sync',
+  },
+  agents: {
+    // Agent configurations
+  },
+};
+```
+
+## Harness Options
+
+### maxAgents
+
+- **Type**: `number`
+- **Default**: `10`
+- **Description**: Maximum number of agents that can be registered
+
+```javascript
+harness: {
+  maxAgents: 50, // Allow up to 50 agents
+}
+```
+
+### timeout
+
+- **Type**: `number` (milliseconds)
+- **Default**: `30000`
+- **Description**: Default timeout for agent execution
+
+```javascript
+harness: {
+  timeout: 60000, // 60 second timeout
+}
+```
+
+### logLevel
+
+- **Type**: `string`
+- **Default**: `'info'`
+- **Options**: `'silent'`, `'error'`, `'warn'`, `'info'`, `'debug'`, `'trace'`
+
+```javascript
+harness: {
+  logLevel: 'debug', // Verbose logging
+}
+```
+
+### executionMode
+
+- **Type**: `string`
+- **Default**: `'sync'`
+- **Options**: `'sync'`, `'async'`, `'stream'`
+
+```javascript
+harness: {
+  executionMode: 'async', // Run agents in parallel
+}
+```
+
+## Agent Configuration
+
+Define agents in the config file:
+
+```javascript
+export default {
+  agents: {
+    assistant: {
+      model: 'gpt-4',
+      skills: ['conversation', 'reasoning'],
+      tools: ['filesystem'],
+      systemPrompt: 'You are a helpful assistant.',
+      maxTokens: 2048,
+      temperature: 0.7,
+    },
+    researcher: {
+      model: 'gpt-4-turbo',
+      skills: ['reasoning', 'web-search'],
+      tools: ['web-search', 'database'],
+      systemPrompt: 'You are a research specialist.',
+    },
+  },
+};
+```
+
+## Environment Variables
+
+Configuration can be overridden via environment variables:
+
+```bash
+ZOD_HARNESS_MAX_AGENTS=20
+ZOD_HARNESS_TIMEOUT=45000
+ZOD_LOG_LEVEL=debug
+ZOD_MODEL=gpt-4-turbo
+```
+
+## Advanced Options
+
+### Retry Configuration
+
+```javascript
+harness: {
+  retry: {
+    maxAttempts: 3,
+    backoff: 'exponential', // or 'linear', 'fixed'
+    initialDelay: 1000,
+    maxDelay: 10000,
+  },
+}
+```
+
+### Rate Limiting
+
+```javascript
+harness: {
+  rateLimit: {
+    maxRequests: 100,
+    perSeconds: 60,
+    strategy: 'sliding-window', // or 'fixed-window', 'token-bucket'
+  },
+}
+```
+
+### Persistence
+
+```javascript
+harness: {
+  persistence: {
+    enabled: true,
+    adapter: 'sqlite', // or 'postgres', 'redis', 'memory'
+    connectionString: './data/messages.db',
+    ttl: 86400, // 24 hours in seconds
+  },
+}
+```
+
+### CORS (for HTTP API)
+
+```javascript
+harness: {
+  cors: {
+    enabled: true,
+    origin: ['https://example.com', 'http://localhost:3000'],
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  },
+}
+```
+
+## Performance Tuning
+
+### Worker Threads
+
+Enable worker threads for CPU-intensive tasks:
+
+```javascript
+harness: {
+  workers: {
+    enabled: true,
+    maxWorkers: 4,
+    taskThreshold: 1000, // ms before offloading to worker
+  },
+}
+```
+
+### Caching
+
+Enable response caching:
+
+```javascript
+harness: {
+  cache: {
+    enabled: true,
+    adapter: 'redis', // or 'memory', 'memcached'
+    ttl: 3600, // 1 hour
+    maxSize: 1000, // max cache entries
+  },
+}
+```
+
+## Production Checklist
+
+- [ ] Set appropriate `timeout` values
+- [ ] Configure `logLevel` to `'warn'` or `'error'` in production
+- [ ] Enable persistence for message durability
+- [ ] Set up rate limiting to prevent abuse
+- [ ] Configure CORS if exposing HTTP API
+- [ ] Enable caching for better performance
+- [ ] Monitor resource usage with `harness.getStats()`
+
+## Example: Full Production Config
+
+```javascript
+export default {
+  harness: {
+    maxAgents: 20,
+    timeout: 45000,
+    logLevel: 'warn',
+    executionMode: 'async',
+    retry: {
+      maxAttempts: 3,
+      backoff: 'exponential',
+      initialDelay: 1000,
+      maxDelay: 10000,
+    },
+    rateLimit: {
+      maxRequests: 1000,
+      perSeconds: 3600,
+      strategy: 'sliding-window',
+    },
+    persistence: {
+      enabled: true,
+      adapter: 'postgres',
+      connectionString: process.env.DATABASE_URL,
+      ttl: 604800, // 7 days
+    },
+    cache: {
+      enabled: true,
+      adapter: 'redis',
+      connectionString: process.env.REDIS_URL,
+      ttl: 3600,
+      maxSize: 5000,
+    },
+  },
+  agents: {
+    // Agent definitions
+  },
+};
+```
+
+Continue to [Plugins](/docs/plugins) to learn about extending the harness.

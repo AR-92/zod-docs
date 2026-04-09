@@ -1,0 +1,144 @@
+---
+title: Core Concepts
+description: Understand the fundamental building blocks of Zod.
+category: CORE CONCEPTS
+order: 1
+prevLink: quick-start
+prevTitle: Quick Start
+nextLink: agents
+nextTitle: Agents
+---
+
+## Agents
+
+Agents are the primary units of work in Zod. An agent is an AI model configured with specific skills, tools, and behavior.
+
+```javascript
+import { Agent } from 'zod-framework';
+
+const agent = new Agent({
+  name: 'MyAgent',
+  model: 'gpt-4',
+  skills: ['conversation'],
+  tools: ['filesystem'],
+});
+```
+
+### Agent Lifecycle
+
+Agents go through a continuous loop:
+
+1. **Receive**: The agent receives a message or trigger
+2. **Process**: The agent processes the input using its model and skills
+3. **Act**: The agent may use tools to perform actions
+4. **Respond**: The agent generates a response
+5. **Wait**: The agent waits for the next input
+
+## Skills
+
+Skills define what an agent can do. They are modular capabilities that can be mixed and matched.
+
+| Skill | Description |
+|-------|-------------|
+| `conversation` | Natural language dialogue |
+| `reasoning` | Logical thinking and problem solving |
+| `coding` | Code generation and analysis |
+| `vision` | Image understanding |
+| `memory` | Long-term context retention |
+
+## Tools
+
+Tools are external capabilities that agents can use to interact with the world.
+
+```javascript
+import { Tool } from 'zod-framework';
+
+class CustomTool extends Tool {
+  name = 'my-tool';
+  description = 'A custom tool for specific tasks';
+  
+  async execute(input) {
+    // Perform the tool's task
+    return result;
+  }
+}
+```
+
+### Built-in Tools
+
+Zod ships with several useful tools:
+
+- **filesystem**: Read and write files
+- **web-search**: Search the internet
+- **database**: Query databases
+- **terminal**: Execute shell commands
+- **http**: Make HTTP requests
+
+## Prompts
+
+Prompts control how agents behave and respond. Zod supports several types:
+
+### System Prompts
+
+Set the overall behavior for an agent:
+
+```javascript
+const agent = new Agent({
+  name: 'CodeReviewer',
+  systemPrompt: `You are a code reviewer. Look for bugs, security issues, 
+    and code quality problems. Be specific and provide actionable feedback.`,
+});
+```
+
+### Task Prompts
+
+Define specific tasks for agents to perform:
+
+```javascript
+await agent.task('Review the code in src/auth.js and provide feedback');
+```
+
+### Message Prompts
+
+Send conversational messages:
+
+```javascript
+await agent.message('What are the security implications of this code?');
+```
+
+## The Harness
+
+The harness is the orchestration layer that manages agents, their lifecycle, and communication.
+
+```javascript
+import { Harness } from 'zod-framework';
+
+const harness = new Harness({
+  maxAgents: 10,
+  timeout: 30000,
+  logLevel: 'info',
+});
+
+harness.register(agent);
+harness.start();
+```
+
+## Configuration
+
+Zod can be configured through `zod.config.js`:
+
+```javascript
+export default {
+  agents: {
+    // Agent configurations
+  },
+  harness: {
+    // Harness settings
+  },
+  plugins: {
+    // Plugin configurations
+  },
+};
+```
+
+Understanding these core concepts is essential for building effective multi-agent systems with Zod. Continue to the [Agents](/docs/agents) guide to learn more about creating and managing agents.
